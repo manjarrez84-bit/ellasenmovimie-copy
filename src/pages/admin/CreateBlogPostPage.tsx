@@ -6,40 +6,53 @@ import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import CreateBlogPostForm from '@/components/forms/CreateBlogPostForm';
 import AuthForm from '@/components/AuthForm';
-import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
+import { getCurrentUser, onAuthStateChange, signOut } from '@/services/forumService';
+import { getUserProfile } from '@/services/profileService'; // Importar el nuevo servicio
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { User as UserIcon, LogOut } from 'lucide-react';
+import { User as UserIcon, LogOut, ShieldOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { signOut } from '@/services/forumService';
 import { toast } from 'sonner';
 
 const CreateBlogPostPage = () => {
   const [user, setUser] = useState<any | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const checkUser = useCallback(async () => {
+  const checkUserAndRole = useCallback(async () => {
     setLoading(true);
     const currentUser = await getCurrentUser();
     setUser(currentUser);
+
+    if (currentUser) {
+      const profile = await getUserProfile(currentUser.id);
+      if (profile && profile.role === 'admin') {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+    } else {
+      setIsAdmin(false);
+    }
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    checkUser();
+    checkUserAndRole();
     const { data: { subscription } } = onAuthStateChange((event, session) => {
-      checkUser();
+      checkUserAndRole();
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [checkUser]);
+  }, [checkUserAndRole]);
 
   const handleSignOut = async () => {
     try {
       await signOut();
       toast.success("Sesión cerrada con éxito.");
       setUser(null);
+      setIsAdmin(false);
     } catch (error: any) {
       console.error("Error al cerrar sesión:", error);
       toast.error(error.message || "Ocurrió un error al cerrar sesión.");
@@ -59,6 +72,33 @@ const CreateBlogPostPage = () => {
     );
   }
 
+  const renderAdminContent = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
+        <UserIcon className="h-5 w-5" />
+        <span>Bienvenido, {user.email}</span>
+      </div>
+      <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2">
+        <LogOut className="h-4 w-4" />
+        <span>Cerrar Sesión</span>
+      </Button>
+      <div className="w-full mt-8">
+        <CreateBlogPostForm userId={user.id} authorEmail={user.email} />
+      </div>
+    </div>
+  );
+
+  const renderUnauthorized = () => (
+    <Card className="w-full max-w-md mx-auto text-center p-8">
+      <ShieldOff className="h-12 w-12 text-destructive mx-auto mb-4" />
+      <CardTitle className="text-2xl text-destructive mb-2 text-balance">Acceso Denegado</CardTitle>
+      <CardContent>
+        <p className="text-foreground text-balance">Solo los administradores tienen permiso para crear publicaciones de blog.</p>
+        <Button onClick={handleSignOut} className="mt-4">Cerrar Sesión</Button>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -72,25 +112,13 @@ const CreateBlogPostPage = () => {
           </div>
 
           {user ? (
-            <div className="flex flex-col items-center space-y-4">
-              <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
-                <UserIcon className="h-5 w-5" />
-                <span>Bienvenido, {user.email}</span>
-              </div>
-              <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2">
-                <LogOut className="h-4 w-4" />
-                <span>Cerrar Sesión</span>
-              </Button>
-              <div className="w-full mt-8">
-                <CreateBlogPostForm userId={user.id} authorEmail={user.email} />
-              </div>
-            </div>
+            isAdmin ? renderAdminContent() : renderUnauthorized()
           ) : (
             <div className="flex flex-col items-center space-y-4">
               <p className="text-lg text-foreground text-balance">
                 Inicia sesión para crear nuevas publicaciones de blog.
               </p>
-              <AuthForm onAuthSuccess={checkUser} />
+              <AuthForm onAuthSuccess={checkUserAndRole} />
             </div>
           )}
         </div>
