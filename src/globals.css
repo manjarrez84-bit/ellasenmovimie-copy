@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Roboto:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colores: Morado/Magenta (#ab07a5), Azul/Púrpura (#615fd2), Blanco (#FFFFFF) */
+    --background: 0 0% 100%; /* Blanco */
+    --foreground: 240 15% 20%; /* Gris oscuro para texto */
+
+    --card: 0 0% 100%; /* Blanco puro para tarjetas */
+    --card-foreground: 240 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 15% 20%;
+
+    --primary: 303 92% 35%; /* Morado/Magenta (#ab07a5) */
+    --primary-foreground: 0 0% 100%; /* Blanco */
+
+    --secondary: 241 67% 60%; /* Azul/Púrpura (#615fd2) */
+    --secondary-foreground: 0 0% 100%; /* Blanco */
+
+    --muted: 240 20% 92%; /* Gris claro/azul para elementos apagados */
+    --muted-foreground: 240 15% 40%; /* Gris medio/azul */
+
+    --accent: 241 67% 60%; /* Mismo que secondary para acentos */
+    --accent-foreground: 0 0% 100%; /* Blanco */
+
+    --destructive: 0 84% 60%; /* Rojo estándar */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 20% 85%; /* Borde gris claro/azul */
+    --input: 240 20% 85%;
+    --ring: 303 92% 35%; /* Mismo que primary */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Colores adaptados para tema oscuro */
+    --background: 240 15% 10%; /* Gris muy oscuro/azul */
+    --foreground: 240 20% 90%; /* Gris claro para texto */
+
+    --card: 240 15% 15%; /* Gris oscuro para tarjetas */
+    --card-foreground: 240 20% 90%;
+
+    --popover: 240 15% 15%;
+    --popover-foreground: 240 20% 90%;
+
+    --primary: 303 92% 50%; /* Morado/Magenta más claro para contraste en oscuro */
+    --primary-foreground: 0 0% 100%; /* Blanco */
+
+    --secondary: 241 67% 70%; /* Azul/Púrpura más claro para contraste */
+    --secondary-foreground: 0 0% 100%; /* Blanco */
+
+    --muted: 240 15% 25%; /* Gris oscuro apagado */
+    --muted-foreground: 240 20% 60%; /* Gris medio */
+
+    --accent: 241 67% 70%; /* Mismo que secondary para acentos */
+    --accent-foreground: 0 0% 100%; /* Blanco */
+
+    --destructive: 0 72% 51%; /* Rojo estándar */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 15% 30%; /* Borde gris oscuro */
+    --input: 240 15% 30%;
+    --ring: 303 92% 50%; /* Mismo que primary */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans; /* Aplicar font-sans por defecto */
+  }
+}
