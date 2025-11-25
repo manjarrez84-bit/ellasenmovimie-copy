@@ -6,7 +6,6 @@ import CallToActionSection from '@/components/CallToActionSection';
 import ContactSection from '@/components/ContactSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import LatestBlogPostsSection from '@/components/LatestBlogPostsSection';
-import CaseStudiesSection from '@/components/CaseStudiesSection'; // Importar el nuevo componente
 
 const Index = () => {
   return (
@@ -77,11 +76,6 @@ const Index = () => {
           </section>
         </AnimatedSection>
         
-        {/* Nueva Sección de Casos de Estudio */}
-        <AnimatedSection>
-          <CaseStudiesSection />
-        </AnimatedSection>
-
         <AnimatedSection>
           <CallToActionSection />
         </AnimatedSection>
