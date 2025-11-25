@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProgramsSection from '@/components/ProgramsSection';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import DetailedProgramsList from '@/components/DetailedProgramsList';
 
 const ProgramsPage = () => {
@@ -17,7 +17,7 @@ const ProgramsPage = () => {
 
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

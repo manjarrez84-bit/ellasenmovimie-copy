@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import VolunteerForm from '@/components/forms/VolunteerForm';
 
 const VolunteerPage = () => {
@@ -31,7 +31,7 @@ const VolunteerPage = () => {
         </section>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

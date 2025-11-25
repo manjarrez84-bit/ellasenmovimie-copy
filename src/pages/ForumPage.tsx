@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import { ForumPost } from '@/types';
 import { getForumPosts, getCurrentUser, onAuthStateChange, signOut } from '@/services/forumService';
 import ForumPostCard from '@/components/ForumPostCard';
@@ -122,7 +122,7 @@ const ForumPage = () => {
         </div>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

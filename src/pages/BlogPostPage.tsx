@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { getPostById } from '@/services/blogService';
@@ -52,7 +52,7 @@ const BlogPostPage = () => {
           </div>
         </main>
         <Footer />
-        <MadeWithDyad />
+        <AttributionFooter />
       </div>
     );
   }
@@ -71,7 +71,7 @@ const BlogPostPage = () => {
           </div>
         </main>
         <Footer />
-        <MadeWithDyad />
+        <AttributionFooter />
       </div>
     );
   }
@@ -102,7 +102,7 @@ const BlogPostPage = () => {
         </div>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

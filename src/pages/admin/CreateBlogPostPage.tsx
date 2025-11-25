@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import CreateBlogPostForm from '@/components/forms/CreateBlogPostForm';
 import AuthForm from '@/components/AuthForm';
 import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
@@ -54,7 +54,7 @@ const CreateBlogPostPage = () => {
           <p className="text-lg text-foreground text-balance">Cargando...</p>
         </main>
         <Footer />
-        <MadeWithDyad />
+        <AttributionFooter />
       </div>
     );
   }
@@ -96,7 +96,7 @@ const CreateBlogPostPage = () => {
         </div>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

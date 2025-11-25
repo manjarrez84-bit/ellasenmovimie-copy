@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import ImpactStatsSection from '@/components/ImpactStatsSection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
 
@@ -17,7 +17,7 @@ const AboutPage = () => {
 
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

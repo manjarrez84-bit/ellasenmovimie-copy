@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import BlogPostCard from '@/components/BlogPostCard';
 import { getAllPosts } from '@/services/blogService';
 import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
@@ -119,7 +119,7 @@ const BlogPage = () => {
         </section>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

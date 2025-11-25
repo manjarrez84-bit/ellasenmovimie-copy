@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ContactSection from '@/components/ContactSection';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 import ContactForm from '@/components/forms/ContactForm'; // Importar el nuevo componente
 
 const ContactPage = () => {
@@ -25,7 +25,7 @@ const ContactPage = () => {
         </section>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

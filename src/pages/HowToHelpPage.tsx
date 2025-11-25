@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { HandHeart, DollarSign, Users, Facebook, Twitter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MadeWithDyad } from '@/components/made-with-dyad';
+import { AttributionFooter } from '@/components/AttributionFooter';
 
 const HowToHelpPage = () => {
   const shareUrl = window.location.origin;
@@ -87,7 +87,7 @@ const HowToHelpPage = () => {
         </section>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };

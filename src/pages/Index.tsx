@@ -1,5 +1,5 @@
 import React from 'react';
-import { MadeWithDyad } from "@/components/made-with-dyad";
+import { AttributionFooter } from "@/components/AttributionFooter";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CallToActionSection from '@/components/CallToActionSection';
@@ -84,7 +84,7 @@ const Index = () => {
         </AnimatedSection>
       </main>
       <Footer />
-      <MadeWithDyad />
+      <AttributionFooter />
     </div>
   );
 };
