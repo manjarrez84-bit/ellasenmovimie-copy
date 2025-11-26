@@ -50,12 +50,12 @@ const ProgramsSection = () => {
           </div>
         {/* Fin Video */}
 
-        {/* Imagen programas.png insertada aquí */}
-        <img 
+        {/* Imagen programas.png ELIMINADA */}
+        {/* <img 
           src="/programas.png" 
           alt="Ejes de los programas" 
           className="mx-auto w-full max-w-4xl h-auto mb-8 rounded-lg shadow-lg" 
-        />
+        /> */}
 
         {/* Texto descriptivo reinsertado y justificado */}
         <div className="max-w-4xl mx-auto mb-12 p-6 bg-background rounded-lg shadow-md text-left">
