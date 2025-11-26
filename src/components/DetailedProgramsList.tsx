@@ -105,6 +105,7 @@ const DetailedProgramsList = () => {
                 <img 
                   src="/1515.png" 
                   alt="Imagen de apoyo al programa" 
+                  id="imagen-fortalecimiento-comunitario" // Nuevo ID para la imagen
                   className="mx-auto w-full max-w-4xl h-auto my-8 rounded-lg shadow-lg" 
                 />
               )}
