@@ -13,7 +13,7 @@ const ProgramsPage = () => {
         <ProgramsSection />
         
         {/* Sección de Video 20.mp4 */}
-        <section className="py-12 bg-background">
+        <section className="py-12"> {/* Eliminado bg-background */}
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <video 
               src="/20.mp4" 
@@ -21,7 +21,7 @@ const ProgramsPage = () => {
               loop 
               muted 
               playsInline 
-              className="w-full h-auto rounded-lg shadow-xl"
+              className="w-full h-auto rounded-lg" // Eliminado shadow-xl
               aria-label="Video de los programas de Ellas en Movimiento"
             >
               Tu navegador no soporta la etiqueta de video.
