@@ -75,18 +75,20 @@ const Index = () => {
           </section>
         </AnimatedSection>
 
-        {/* NUEVA SECCIÓN DE IMÁGENES */}
+        {/* NUEVA SECCIÓN DE IMÁGENES (EJES DE ATENCIÓN) */}
         <AnimatedSection>
-          <section className="py-16 bg-muted/30">
+          <section className="py-16 bg-background"> {/* Fondo cambiado a bg-background (blanco/oscuro) */}
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-4xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 items-center max-w-6xl mx-auto">
-                <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
-                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
-                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
-                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
-                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
-                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain rounded-lg shadow-md" />
+              {/* Aumentamos el tamaño máximo del contenedor de la cuadrícula a 7xl y ajustamos el espaciado */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center max-w-7xl mx-auto">
+                {/* Eliminamos rounded-lg y shadow-md de las imágenes */}
+                <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain" />
               </div>
             </div>
           </section>
