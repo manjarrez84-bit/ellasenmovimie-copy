@@ -27,12 +27,28 @@ const ProgramsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-16 pt-24 bg-muted/30"> {/* Ajustado pt-24 para el header fijo */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-primary mb-12 text-balance">Nuestros Programas</h2>
         <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-balance">
           Trabajamos en diversas áreas para ofrecer un apoyo integral a las mujeres, adaptándonos a sus necesidades específicas.
         </p>
+
+        {/* Video 20.mp4 insertado aquí */}
+        <div className="container mx-auto px-4 text-center max-w-4xl mb-12">
+            <video 
+              src="/20.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-auto rounded-lg"
+              aria-label="Video de los programas de Ellas en Movimiento"
+            >
+              Tu navegador no soporta la etiqueta de video.
+            </video>
+          </div>
+        {/* Fin Video */}
 
         {/* Imagen programas.png insertada aquí */}
         <img 
