@@ -83,8 +83,8 @@ const Index = () => {
               <h2 className="text-4xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
               {/* Aumentamos el tamaño máximo del contenedor de la cuadrícula a 7xl y ajustamos el espaciado */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center max-w-7xl mx-auto">
-                {/* Eje 1 con hipervínculo a REDPARADAHR */}
-                <Link to="/programs#redparadaHR-section" className="block hover:opacity-80 transition-opacity duration-200">
+                {/* Eje 1 con hipervínculo a Fortalecimiento Comunitario */}
+                <Link to="/programs#fortalecimiento-comunitario-section" className="block hover:opacity-80 transition-opacity duration-200">
                   <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
                 </Link>
                 <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />

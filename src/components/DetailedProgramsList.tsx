@@ -53,7 +53,7 @@ const DetailedProgramsList = () => {
             <React.Fragment key={index}>
               <Card 
                 className="shadow-lg hover:shadow-xl transition-shadow duration-300"
-                id={program.title === "REDPARADAHR" ? "redparadaHR-section" : undefined}
+                id={program.title === "REDPARADAHR" ? "redparadaHR-section" : program.title === "Fortalecimiento Comunitario" ? "fortalecimiento-comunitario-section" : undefined}
               >
                 <CardHeader className="flex flex-row items-center space-x-4 p-4 md:p-6">
                   {program.icon}
