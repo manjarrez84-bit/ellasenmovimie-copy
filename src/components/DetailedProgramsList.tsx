@@ -51,7 +51,10 @@ const DetailedProgramsList = () => {
         <div className="max-w-4xl mx-auto space-y-6">
           {detailedPrograms.map((program, index) => (
             <React.Fragment key={index}>
-              <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card 
+                className="shadow-lg hover:shadow-xl transition-shadow duration-300"
+                id={program.title === "REDPARADAHR" ? "redparadaHR-section" : undefined}
+              >
                 <CardHeader className="flex flex-row items-center space-x-4 p-4 md:p-6">
                   {program.icon}
                   <CardTitle className="text-xl font-semibold text-primary text-balance">{program.title}</CardTitle>
