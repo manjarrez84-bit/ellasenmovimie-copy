@@ -54,7 +54,7 @@ const Index = () => {
         <AnimatedSection>
           <section className="py-16 bg-background"> {/* Cambiado a bg-background para que los logos con fondo blanco se vean transparentes en modo claro */}
             <div className="container mx-auto px-4 text-center">
-              <h2 className="text-4xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
+              {/* <h2 className="text-4xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2> */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
                 <img 
                   src="/ALIANZA.png" 
