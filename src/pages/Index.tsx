@@ -59,17 +59,17 @@ const Index = () => {
                 <img 
                   src="/ALIANZA.png" 
                   alt="Alianza 1" 
-                  className="mx-auto w-full h-auto max-h-64 object-contain" 
+                  className="mx-auto w-full h-auto object-contain" 
                 />
                 <img 
                   src="/ALIANZA1.png" 
                   alt="Alianza 2" 
-                  className="mx-auto w-full h-auto max-h-64 object-contain" 
+                  className="mx-auto w-full h-auto object-contain" 
                 />
                 <img 
                   src="/CERT.png" 
                   alt="Certificación" 
-                  className="mx-auto w-full h-auto max-h-64 object-contain" 
+                  className="mx-auto w-full h-auto object-contain" 
                 />
               </div>
             </div>
