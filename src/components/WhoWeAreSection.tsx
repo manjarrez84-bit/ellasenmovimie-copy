@@ -111,7 +111,20 @@ const WhoWeAreSection = () => {
           </p>
         </div>
 
-        <img src="/EJES2.png" alt="Ejes de acción" className="mt-12 mx-auto w-full h-auto rounded-lg" />
+        {/* Video ejes2.mp4 insertado aquí */}
+        <div className="mx-auto w-full max-w-4xl h-auto mt-12">
+          <video 
+            src="/ejes2.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-auto object-cover"
+            aria-label="Video de ejes de acción"
+          >
+            Tu navegador no soporta la etiqueta de video.
+          </video>
+        </div>
 
         {/* Nuevo texto añadido aquí - Cambiando text-justify a text-left */}
         <div className="max-w-4xl mx-auto mt-8 p-6 bg-muted/50 rounded-lg text-left">
