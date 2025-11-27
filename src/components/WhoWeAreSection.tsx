@@ -16,6 +16,7 @@ const WhoWeAreSection = () => {
             loop 
             muted 
             playsInline 
+            controls 
             className="w-full h-auto object-cover"
             aria-label="Video de presentación de Ellas en Movimiento"
           >
