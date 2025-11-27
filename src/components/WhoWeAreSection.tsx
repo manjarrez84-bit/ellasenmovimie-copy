@@ -8,10 +8,10 @@ const WhoWeAreSection = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4 text-center">
         
-        {/* Video quienes.mp4 insertado aquí */}
+        {/* Video insertado aquí (usando el archivo de video disponible) */}
         <div className="mx-auto w-full max-w-4xl h-auto mb-8 rounded-lg shadow-lg overflow-hidden">
           <video 
-            src="/quienes.mp4" 
+            src="/grok-video-35ee6c0f-e16e-4cd7-8475-0af6e7a58fd8.mp4" 
             autoPlay 
             loop 
             muted 
