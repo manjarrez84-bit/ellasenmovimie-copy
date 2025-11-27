@@ -8,12 +8,20 @@ const WhoWeAreSection = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4 text-center">
         
-        {/* Imagen quienes.png insertada aquí */}
-        <img 
-          src="/quienes.png" 
-          alt="Quiénes Somos" 
-          className="mx-auto w-full max-w-4xl h-auto mb-8" 
-        />
+        {/* Video quienes.mp4 insertado aquí */}
+        <div className="mx-auto w-full max-w-4xl h-auto mb-8 rounded-lg shadow-lg overflow-hidden">
+          <video 
+            src="/quienes.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-auto object-cover"
+            aria-label="Video de presentación de Ellas en Movimiento"
+          >
+            Tu navegador no soporta la etiqueta de video.
+          </video>
+        </div>
         
         {/* Contenido de Misión, Visión, Valores */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
