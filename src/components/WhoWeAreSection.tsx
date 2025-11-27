@@ -8,7 +8,7 @@ const WhoWeAreSection = () => {
     <section className="py-16 pt-28 bg-background"> {/* Aumentado pt-28 para evitar que el header lo tape */}
       <div className="container mx-auto px-4 text-center">
         
-        {/* Video quienes4.mp4 insertado aquí - Se eliminan shadow-lg y overflow-hidden */}
+        {/* Video quienes4.mp4 insertado aquí - Sin controles */}
         <div className="mx-auto w-full max-w-4xl h-auto mb-8">
           <video 
             src="/quienes4.mp4" 
@@ -16,7 +16,6 @@ const WhoWeAreSection = () => {
             loop 
             muted 
             playsInline 
-            controls 
             className="w-full h-auto object-cover"
             aria-label="Video de presentación de Ellas en Movimiento"
           >
