@@ -5,11 +5,11 @@ import { Goal, Heart, Lightbulb } from 'lucide-react';
 
 const WhoWeAreSection = () => {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 pt-28 bg-background"> {/* Aumentado pt-28 para evitar que el header lo tape */}
       <div className="container mx-auto px-4 text-center">
         
-        {/* Video quienes4.mp4 insertado aquí */}
-        <div className="mx-auto w-full max-w-4xl h-auto mb-8 rounded-lg shadow-lg overflow-hidden">
+        {/* Video quienes4.mp4 insertado aquí - Se eliminan shadow-lg y overflow-hidden */}
+        <div className="mx-auto w-full max-w-4xl h-auto mb-8">
           <video 
             src="/quienes4.mp4" 
             autoPlay 
