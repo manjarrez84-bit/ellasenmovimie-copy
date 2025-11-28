@@ -36,11 +36,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Sección con la imagen fundadora1.png (sin fondo, marco ni sombra) */}
+        {/* Sección con la imagen fundadora22.png (sin fondo, marco ni sombra) */}
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 text-center">
             <img 
-              src="/fundadora1.png" 
+              src="/fundadora22.png" 
               alt="Imagen de la Fundadora" 
               className="mx-auto w-full max-w-4xl h-auto" 
             />
