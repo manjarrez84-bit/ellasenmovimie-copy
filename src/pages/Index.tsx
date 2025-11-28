@@ -56,8 +56,8 @@ const Index = () => {
           <section className="py-16 bg-background"> {/* Fondo cambiado a bg-background (blanco/oscuro) */}
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
-              {/* Se ajusta el contenedor de la cuadrícula para que ocupe más espacio y se reduce el gap */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 items-center max-w-full mx-auto">
+              {/* Ajuste: grid-cols-6 para mostrar 6 elementos en una fila, incluso en móvil si es posible, o usando flexbox si la cuadrícula es demasiado restrictiva. Usaremos grid-cols-3 en móvil y grid-cols-6 en pantallas grandes para asegurar la visibilidad. */}
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 items-center max-w-full mx-auto">
                 {/* Eje 1 con hipervínculo a la imagen 1515.png */}
                 <Link to="/programs#imagen-fortalecimiento-comunitario" className="block hover:opacity-80 transition-opacity duration-200">
                   <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
