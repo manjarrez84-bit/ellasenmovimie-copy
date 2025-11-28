@@ -51,6 +51,27 @@ const Index = () => {
           <LatestBlogPostsSection />
         </AnimatedSection>
         
+        {/* NUEVA SECCIÓN DE IMÁGENES (EJES DE ATENCIÓN) */}
+        <AnimatedSection>
+          <section className="py-16 bg-background"> {/* Fondo cambiado a bg-background (blanco/oscuro) */}
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
+              {/* Se ajusta el contenedor de la cuadrícula para que ocupe más espacio y se reduce el gap */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 items-center max-w-full mx-auto">
+                {/* Eje 1 con hipervínculo a la imagen 1515.png */}
+                <Link to="/programs#imagen-fortalecimiento-comunitario" className="block hover:opacity-80 transition-opacity duration-200">
+                  <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
+                </Link>
+                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain" />
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
         {/* Sección de Alianzas y Certificaciones */}
         <AnimatedSection>
           <section className="py-16 bg-background"> {/* Cambiado a bg-background para que los logos con fondo blanco se vean transparentes en modo claro */}
@@ -72,27 +93,6 @@ const Index = () => {
                   alt="Certificación" 
                   className="mx-auto w-full h-auto object-contain" 
                 />
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        {/* NUEVA SECCIÓN DE IMÁGENES (EJES DE ATENCIÓN) */}
-        <AnimatedSection>
-          <section className="py-16 bg-background"> {/* Fondo cambiado a bg-background (blanco/oscuro) */}
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
-              {/* Se ajusta el contenedor de la cuadrícula para que ocupe más espacio y se reduce el gap */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 items-center max-w-full mx-auto">
-                {/* Eje 1 con hipervínculo a la imagen 1515.png */}
-                <Link to="/programs#imagen-fortalecimiento-comunitario" className="block hover:opacity-80 transition-opacity duration-200">
-                  <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
-                </Link>
-                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain" />
               </div>
             </div>
           </section>
