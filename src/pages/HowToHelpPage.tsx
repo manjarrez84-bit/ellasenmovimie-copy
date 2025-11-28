@@ -18,7 +18,7 @@ const HowToHelpPage = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="relative py-16 bg-muted/30 text-center overflow-hidden">
+        <section className="relative py-16 pt-28 bg-muted/30 text-center overflow-hidden"> {/* Ajustado pt-28 */}
           <img 
             src="/voluntariado.png" 
             alt="Fondo de voluntariado" 
