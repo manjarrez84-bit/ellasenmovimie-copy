@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const ContactSection = () => {
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="pt-28 pb-16 bg-muted/30"> {/* Cambiado de py-16 a pt-28 pb-16 para compensar el header fijo y reducir el margen superior visible */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-primary mb-12 text-balance">Contáctanos</h2>
         <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-balance">
