@@ -14,11 +14,11 @@ const Index = () => {
       <Header />
       <main className="flex-grow pt-24"> {/* Aumentado pt-24 para compensar el header fijo */}
         
-        {/* Sección con la imagen introellas.png (sin sombra ni marco) */}
+        {/* Sección con la imagen introellas22.png (sin sombra ni marco) */}
         <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4 text-center">
             <img 
-              src="/introellas.png" 
+              src="/introellas22.png" 
               alt="Ellas en Movimiento A.C. - Introducción" 
               className="mx-auto w-full h-auto" 
             />
