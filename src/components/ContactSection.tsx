@@ -40,7 +40,7 @@ const ContactSection = () => {
               <CardTitle className="text-xl font-semibold mb-2 text-balance">Correo Electrónico</CardTitle>
             </CardHeader>
             <CardContent className="text-foreground text-balance">
-              ellasenmov@gmail.com
+              contacto@app:ellasenmovimiento.org
             </CardContent>
           </Card>
 
