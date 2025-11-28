@@ -25,22 +25,22 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Sección con el GIF ellas.gif */}
+        {/* Sección con la imagen intro2.png (Reemplazo de ellas.gif) */}
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 text-center">
             <img 
-              src="/ellas.gif" 
-              alt="Animación Ellas en Movimiento" 
+              src="/intro2.png" 
+              alt="Introducción Ellas en Movimiento" 
               className="mx-auto w-full max-w-4xl h-auto rounded-lg shadow-lg" 
             />
           </div>
         </section>
 
-        {/* Sección con la imagen fundadora.png (sin fondo, marco ni sombra) */}
+        {/* Sección con la imagen fundadora1.png (Reemplazo de fundadora.png) */}
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 text-center">
             <img 
-              src="/fundadora.png" 
+              src="/fundadora1.png" 
               alt="Imagen de la Fundadora" 
               className="mx-auto w-full max-w-4xl h-auto" 
             />
