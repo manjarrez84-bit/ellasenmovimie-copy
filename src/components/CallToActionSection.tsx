@@ -6,7 +6,7 @@ const CallToActionSection = () => {
   return (
     <section className="py-20 bg-primary text-primary-foreground text-center dark:bg-black">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-6 text-balance">Tu Apoyo es fundamental para que podamos seguir detonando las capacidades de las niñas y las mujeres. ¡Gracias por creer en nuestra causa y en nuestra gente! ¡Hay muchas maneras de contribuir!</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">Tu Apoyo es fundamental para que podamos seguir detonando las capacidades de las niñas y las mujeres. ¡Gracias por creer en nuestra causa y en nuestra gente! ¡Hay muchas maneras de contribuir!</h2>
         <p className="text-xl mb-10 max-w-3xl mx-auto text-balance">
           
         </p>
