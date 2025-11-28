@@ -50,20 +50,13 @@ const ProgramsSection = () => {
           </div>
         {/* Fin Video */}
 
-        {/* Imagen programas.png ELIMINADA */}
-        {/* <img 
-          src="/programas.png" 
-          alt="Ejes de los programas" 
-          className="mx-auto w-full max-w-4xl h-auto mb-8 rounded-lg shadow-lg" 
-        /> */}
-
         {/* Texto descriptivo reinsertado y justificado */}
         <div className="max-w-4xl mx-auto mb-12 p-6 bg-background rounded-lg shadow-md text-left">
           <p className="text-lg text-foreground text-justify text-balance">
-            Nuestros programas están diseñados para abordar las necesidades de las mujeres en situación de vulnerabilidad, enfocándose en tres pilares fundamentales: 
-            <span className="font-bold text-primary"> Seguridad, Autonomía y Empoderamiento.</span>
-            <br /> {/* Agregamos un salto de línea explícito para reflejar el formato solicitado */}
-            A través de un enfoque integral, buscamos no solo atender la emergencia, sino también construir un camino sostenible hacia la independencia y el bienestar.
+            Nuestros programas están diseñados para abordar los tres pilares esenciales que toda mujer debe proteger: 
+            <span className="font-bold text-primary"> vida, salud y autosuficiencia para un retiro digno.</span>
+            <br />
+            Por ello trabajamos para contribuir a mejorar la realidad de niñas y mujeres en contextos de vulnerabilidad.
           </p>
         </div>
         {/* Fin del texto reinsertado */}
