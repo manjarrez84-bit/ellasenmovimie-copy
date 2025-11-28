@@ -7,7 +7,7 @@ const STATIC_TEST_POST: BlogPost = {
   date: new Date().toISOString(),
   author: 'Ellas en Movimiento A.C.',
   summary: 'Un resumen de los logros y talleres realizados en la comunidad durante el cierre de 2025.',
-  image_url: '/public/ellas333.png', // Usando una imagen existente como placeholder
+  image_url: '', // Eliminada la URL de la imagen de placeholder
   content: `
 14 Gestiones de alimentos nutritivos, con igual número de distribuciones colectivas de comida sana. 
 6 Talleres de alimentación nutritiva y vida sana.
