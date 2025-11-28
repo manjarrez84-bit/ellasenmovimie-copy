@@ -1,6 +1,25 @@
 import { supabase } from '@/lib/supabase';
 import { BlogPost } from '@/types';
 
+const STATIC_TEST_POST: BlogPost = {
+  id: 'static-test-post-1',
+  title: 'CIERRE DE TALLERES EN COMUNIDAD 2025',
+  date: new Date().toISOString(),
+  author: 'Ellas en Movimiento A.C.',
+  summary: 'Un resumen de los logros y talleres realizados en la comunidad durante el cierre de 2025.',
+  image_url: '/public/ellas333.png', // Usando una imagen existente como placeholder
+  content: `
+14 Gestiones de alimentos nutritivos, con igual número de distribuciones colectivas de comida sana. 
+6 Talleres de alimentación nutritiva y vida sana.
+4 Talleres de Crianza Positiva
+1 Taller de autocuidado con cuidadoras.
+
+Se graduaron 15 mujeres en educación financiera, e igual número de graduadas en los talleres productivos en los ramos de alimentos y productos de higiene y limpieza.
+
+1 Taller de Introducción a las energías renovables usando energía solar. ABC de la técnica. Con 62 niñas y niños beneficiados.
+  `,
+};
+
 export const getAllPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from('blog_posts')
@@ -9,13 +28,28 @@ export const getAllPosts = async (): Promise<BlogPost[]> => {
 
   if (error) {
     console.error('Error fetching posts:', error);
-    throw new Error('No se pudieron cargar las publicaciones.');
+    // Si hay un error de Supabase, devolvemos solo el post estático para no romper la app
+    return [STATIC_TEST_POST];
   }
 
-  return data as BlogPost[];
+  // Combinamos los posts de Supabase con el post estático
+  const supabasePosts = data as BlogPost[];
+  
+  // Evitamos duplicados si el post estático ya existe (aunque tiene un ID único)
+  const combinedPosts = [STATIC_TEST_POST, ...supabasePosts].filter((post, index, self) => 
+    index === self.findIndex((t) => (
+      t.id === post.id
+    ))
+  );
+
+  return combinedPosts;
 };
 
 export const getPostById = async (id: string): Promise<BlogPost | null> => {
+  if (id === STATIC_TEST_POST.id) {
+    return STATIC_TEST_POST;
+  }
+
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
@@ -24,7 +58,6 @@ export const getPostById = async (id: string): Promise<BlogPost | null> => {
 
   if (error) {
     console.error(`Error fetching post with id ${id}:`, error);
-    // No lanzamos un error si no se encuentra, simplemente devolvemos null
     if (error.code === 'PGRST116') {
         return null;
     }
