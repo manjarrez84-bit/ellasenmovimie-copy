@@ -40,6 +40,10 @@ Se graduaron 15 mujeres en educación financiera, e igual número de graduadas e
 </div>
 
 1 Taller de Introducción a las energías renovables usando energía solar. ABC de la técnica. Con 62 niñas y niños beneficiados.
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/noti222.jpeg" alt="Taller de Introducción a las energías renovables" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+</div>
   `,
 };
 
