@@ -77,7 +77,7 @@ const Index = () => {
           <section className="py-16 bg-background"> {/* Cambiado a bg-background para que los logos con fondo blanco se vean transparentes en modo claro */}
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">NUESTRAS ALIANZAS</h2> {/* Título añadido y aumentado */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center max-w-5xl mx-auto"> {/* Cambiado a grid-cols-4 para acomodar la nueva imagen */}
                 <img 
                   src="/ALIANZA.png" 
                   alt="Alianza 1" 
@@ -86,6 +86,12 @@ const Index = () => {
                 <img 
                   src="/ALIANZA1.png" 
                   alt="Alianza 2" 
+                  className="mx-auto w-full h-auto object-contain" 
+                />
+                {/* Nueva imagen insertada aquí */}
+                <img 
+                  src="/alian.jpg" 
+                  alt="Alianza 3" 
                   className="mx-auto w-full h-auto object-contain" 
                 />
                 <img 
