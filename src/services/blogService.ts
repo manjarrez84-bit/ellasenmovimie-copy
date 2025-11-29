@@ -35,6 +35,10 @@ const STATIC_TEST_POST: BlogPost = {
 
 Se graduaron 15 mujeres en educación financiera, e igual número de graduadas en los talleres productivos en los ramos de alimentos y productos de higiene y limpieza.
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/noti15.jpg" alt="Graduadas en educación financiera y talleres productivos" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+</div>
+
 1 Taller de Introducción a las energías renovables usando energía solar. ABC de la técnica. Con 62 niñas y niños beneficiados.
   `,
 };
