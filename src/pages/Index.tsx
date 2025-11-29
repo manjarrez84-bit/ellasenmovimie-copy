@@ -88,11 +88,11 @@ const Index = () => {
                   alt="Alianza 2" 
                   className="mx-auto w-full h-auto object-contain" 
                 />
-                {/* Nueva imagen insertada aquí */}
+                {/* Ajuste de tamaño para alian.jpg */}
                 <img 
                   src="/alian.jpg" 
                   alt="Alianza 3" 
-                  className="mx-auto w-full h-auto object-contain" 
+                  className="mx-auto w-3/4 h-auto object-contain" 
                 />
                 <img 
                   src="/CERT.png" 
