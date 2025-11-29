@@ -7,9 +7,14 @@ const STATIC_TEST_POST: BlogPost = {
   date: new Date().toISOString(),
   author: 'Ellas en Movimiento A.C.',
   summary: 'Un resumen de los logros y talleres realizados en la comunidad durante el cierre de 2025.',
-  image_url: '', // Eliminada la URL de la imagen de placeholder
+  image_url: '',
   content: `
 14 Gestiones de alimentos nutritivos, con igual número de distribuciones colectivas de comida sana. 
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/noti1.jpg" alt="Distribución de alimentos nutritivos" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+</div>
+
 6 Talleres de alimentación nutritiva y vida sana.
 4 Talleres de Crianza Positiva
 1 Taller de autocuidado con cuidadoras.
