@@ -22,6 +22,11 @@ const STATIC_TEST_POST: BlogPost = {
 </div>
 
 4 Talleres de Crianza Positiva
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/noti4.jpg" alt="Talleres de Crianza Positiva" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+</div>
+
 1 Taller de autocuidado con cuidadoras.
 
 Se graduaron 15 mujeres en educación financiera, e igual número de graduadas en los talleres productivos en los ramos de alimentos y productos de higiene y limpieza.
