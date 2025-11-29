@@ -10,6 +10,7 @@ import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw'; // Importar rehypeRaw
 
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -94,7 +95,10 @@ const BlogPostPage = () => {
             <img src={post.image_url} alt={post.title} className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-lg mb-8" />
 
             <div className="prose lg:prose-xl max-w-none dark:prose-invert text-foreground">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]} // Añadir rehypeRaw para renderizar HTML
+              >
                 {post.content}
               </ReactMarkdown>
             </div>
