@@ -68,7 +68,7 @@ const BlogPage = () => {
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Noticias y Actualizaciones</h1>
+              <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Blog</h1>
               <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
                 Mantente al día con nuestras últimas noticias, historias de impacto y próximos eventos.
               </p>
