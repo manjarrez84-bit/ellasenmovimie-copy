@@ -7,52 +7,38 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import CreateBlogPostForm from '@/components/forms/CreateBlogPostForm';
 import AuthForm from '@/components/AuthForm';
 import { getCurrentUser, onAuthStateChange, signOut } from '@/services/forumService';
-import { getUserProfile } from '@/services/profileService'; // Importar el nuevo servicio
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { User as UserIcon, LogOut, ShieldOff } from 'lucide-react';
+import { User as UserIcon, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 const CreateBlogPostPage = () => {
   const [user, setUser] = useState<any | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const checkUserAndRole = useCallback(async () => {
+  const checkUser = useCallback(async () => {
     setLoading(true);
     const currentUser = await getCurrentUser();
     setUser(currentUser);
-
-    if (currentUser) {
-      const profile = await getUserProfile(currentUser.id);
-      if (profile && profile.role === 'admin') {
-        setIsAdmin(true);
-      } else {
-        setIsAdmin(false);
-      }
-    } else {
-      setIsAdmin(false);
-    }
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    checkUserAndRole();
+    checkUser();
     const { data: { subscription } } = onAuthStateChange((event, session) => {
-      checkUserAndRole();
+      checkUser();
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, [checkUserAndRole]);
+  }, [checkUser]);
 
   const handleSignOut = async () => {
     try {
       await signOut();
       toast.success("Sesión cerrada con éxito.");
       setUser(null);
-      setIsAdmin(false);
     } catch (error: any) {
       console.error("Error al cerrar sesión:", error);
       toast.error(error.message || "Ocurrió un error al cerrar sesión.");
@@ -72,7 +58,7 @@ const CreateBlogPostPage = () => {
     );
   }
 
-  const renderAdminContent = () => (
+  const renderContent = () => (
     <div className="flex flex-col items-center space-y-4">
       <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
         <UserIcon className="h-5 w-5" />
@@ -88,37 +74,26 @@ const CreateBlogPostPage = () => {
     </div>
   );
 
-  const renderUnauthorized = () => (
-    <Card className="w-full max-w-md mx-auto text-center p-8">
-      <ShieldOff className="h-12 w-12 text-destructive mx-auto mb-4" />
-      <CardTitle className="text-2xl text-destructive mb-2 text-balance">Acceso Denegado</CardTitle>
-      <CardContent>
-        <p className="text-foreground text-balance">Solo los administradores tienen permiso para crear publicaciones de blog.</p>
-        <Button onClick={handleSignOut} className="mt-4">Cerrar Sesión</Button>
-      </CardContent>
-    </Card>
-  );
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Administración de Blog</h1>
+            <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Crear Nueva Publicación de Blog</h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
-              Crea nuevas publicaciones para el blog de la comunidad.
+              Comparte tus noticias, historias o información relevante con la comunidad.
             </p>
           </div>
 
           {user ? (
-            isAdmin ? renderAdminContent() : renderUnauthorized()
+            renderContent()
           ) : (
             <div className="flex flex-col items-center space-y-4">
               <p className="text-lg text-foreground text-balance">
                 Inicia sesión para crear nuevas publicaciones de blog.
               </p>
-              <AuthForm onAuthSuccess={checkUserAndRole} />
+              <AuthForm onAuthSuccess={checkUser} />
             </div>
           )}
         </div>
