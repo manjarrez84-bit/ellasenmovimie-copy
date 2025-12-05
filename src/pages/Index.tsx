@@ -25,6 +25,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Sección de Call to Action movida aquí */}
+        <AnimatedSection>
+          <CallToActionSection />
+        </AnimatedSection>
+
         {/* Sección con el GIF ellas.gif */}
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 text-center">
@@ -104,9 +109,8 @@ const Index = () => {
           </section>
         </AnimatedSection>
         
-        <AnimatedSection>
-          <CallToActionSection />
-        </AnimatedSection>
+        {/* CallToActionSection original eliminado de aquí */}
+        
         <AnimatedSection>
           <ContactSection />
         </AnimatedSection>
