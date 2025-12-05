@@ -18,7 +18,7 @@ const HowToHelpPage = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="relative py-16 pt-28 bg-muted/30 text-center overflow-hidden"> {/* Ajustado pt-28 */}
+        <section className="relative py-16 pt-32 bg-muted/30 text-center overflow-hidden"> {/* Ajustado pt-32 */}
           <img 
             src="/voluntariado.png" 
             alt="Fondo de voluntariado" 
@@ -27,7 +27,7 @@ const HowToHelpPage = () => {
           <div className="relative z-10 container mx-auto px-4">
             <h1 className="text-4xl font-bold text-primary mb-8 text-balance">Cómo Puedes Ayudar</h1>
             <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-balance">
-              Tu apoyo es fundamental para que Ellas en Movimiento, A.C. pueda seguir detonando las capacidades de las niñas y mujeres. ¡Gracias por creer en nuestra causa y en nuestra gente! ¡Hay muchas maneras de contribuir!
+              Tu apoyo es fundamental para que Ellas en Movimiento, A.C. pueda seguir detonando las capacidades de las niñas y las mujeres. ¡Gracias por creer en nuestra causa y en nuestra gente! ¡Hay muchas maneras de contribuir!
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
