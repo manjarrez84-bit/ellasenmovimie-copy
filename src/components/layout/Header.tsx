@@ -83,6 +83,11 @@ const Header = () => {
               Admin
             </Link>
           )}
+          {user && ( // Show "Mi Perfil" link only if user is logged in
+            <Link to="/profile" className={linkClasses}>
+              Mi Perfil
+            </Link>
+          )}
           <Link to="/donate">
             <Button>Donar</Button>
           </Link>
@@ -111,6 +116,11 @@ const Header = () => {
                 {isAdmin && ( // Show "Admin" link only if user is admin
                   <SheetClose asChild>
                     <Link to="/admin/dashboard">Admin</Link>
+                  </SheetClose>
+                )}
+                {user && ( // Show "Mi Perfil" link only if user is logged in
+                  <SheetClose asChild>
+                    <Link to="/profile">Mi Perfil</Link>
                   </SheetClose>
                 )}
                 <SheetClose asChild>

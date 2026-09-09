@@ -17,7 +17,8 @@ import BlogPostPage from "./pages/BlogPostPage";
 import ForumPage from "./pages/ForumPage";
 import CreateBlogPostPage from "./pages/admin/CreateBlogPostPage";
 import EditBlogPostPage from "./pages/admin/EditBlogPostPage";
-import AdminDashboardPage from "./pages/admin/AdminDashboardPage"; // Import the new admin dashboard page
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import ProfilePage from "./pages/ProfilePage"; // Import the new ProfilePage
 import { ThemeProvider } from "./components/theme-provider";
 
 const queryClient = new QueryClient();
@@ -43,7 +44,8 @@ const App = () => (
             <Route path="/forum" element={<ForumPage />} />
             <Route path="/admin/blog/new" element={<CreateBlogPostPage />} />
             <Route path="/admin/blog/edit/:id" element={<EditBlogPostPage />} />
-            <Route path="/admin/dashboard" element={<AdminDashboardPage />} /> {/* Add the new admin dashboard route */}
+            <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+            <Route path="/profile" element={<ProfilePage />} /> {/* Add the new profile page route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
