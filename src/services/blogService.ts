@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import { BlogPost } from '@/types';
+import { BlogPost, BlogPostFormValues } from '@/types'; // Importar BlogPostFormValues
 
 const STATIC_TEST_POST: BlogPost = {
   id: 'static-test-post-1',
@@ -92,7 +92,7 @@ export const getPostById = async (id: string): Promise<BlogPost | null> => {
   return data as BlogPost | null;
 };
 
-export const createBlogPost = async (post: Omit<BlogPost, 'id' | 'date' | 'user_id'>, userId: string): Promise<BlogPost> => {
+export const createBlogPost = async (post: BlogPostFormValues, userId: string): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .insert([
@@ -116,7 +116,7 @@ export const createBlogPost = async (post: Omit<BlogPost, 'id' | 'date' | 'user_
   return data as BlogPost;
 };
 
-export const updateBlogPost = async (id: string, post: Omit<BlogPost, 'id' | 'date' | 'user_id'>): Promise<BlogPost> => {
+export const updateBlogPost = async (id: string, post: BlogPostFormValues): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .update({ 
