@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -17,20 +17,20 @@ const BlogPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<any | null>(null);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        const fetchedPosts = await getAllPosts();
-        setPosts(fetchedPosts);
-      } catch (err) {
-        console.error("Error fetching blog posts:", err);
-        setError('No se pudieron cargar las publicaciones. Por favor, inténtalo de nuevo más tarde.');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchPosts = useCallback(async () => {
+    try {
+      setLoading(true);
+      const fetchedPosts = await getAllPosts();
+      setPosts(fetchedPosts);
+    } catch (err) {
+      console.error("Error fetching blog posts:", err);
+      setError('No se pudieron cargar las publicaciones. Por favor, inténtalo de nuevo más tarde.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
+  useEffect(() => {
     const checkUser = async () => {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
@@ -41,12 +41,13 @@ const BlogPage = () => {
 
     const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((event, session) => {
       setUser(session?.user || null);
+      fetchPosts(); // Refrescar posts si el estado de autenticación cambia
     });
 
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [fetchPosts]);
 
   const renderSkeletons = () => (
     Array.from({ length: 3 }).map((_, index) => (
@@ -95,7 +96,7 @@ const BlogPage = () => {
             ) : posts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {posts.map(post => (
-                  <BlogPostCard key={post.id} post={post} />
+                  <BlogPostCard key={post.id} post={post} onPostDeleted={fetchPosts} />
                 ))}
               </div>
             ) : (

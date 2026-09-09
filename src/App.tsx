@@ -15,7 +15,8 @@ import FAQPage from "./pages/FAQPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import ForumPage from "./pages/ForumPage";
-import CreateBlogPostPage from "./pages/admin/CreateBlogPostPage"; // Import the new admin page
+import CreateBlogPostPage from "./pages/admin/CreateBlogPostPage";
+import EditBlogPostPage from "./pages/admin/EditBlogPostPage"; // Import the new edit page
 import { ThemeProvider } from "./components/theme-provider";
 
 const queryClient = new QueryClient();
@@ -39,7 +40,8 @@ const App = () => (
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/forum" element={<ForumPage />} />
-            <Route path="/admin/blog/new" element={<CreateBlogPostPage />} /> {/* Add the new admin route */}
+            <Route path="/admin/blog/new" element={<CreateBlogPostPage />} />
+            <Route path="/admin/blog/edit/:id" element={<EditBlogPostPage />} /> {/* Add the new admin edit route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

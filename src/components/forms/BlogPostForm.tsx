@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -9,9 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
-import { createBlogPost } from '@/services/blogService';
+import { createBlogPost, updateBlogPost } from '@/services/blogService';
 import { useNavigate } from 'react-router-dom';
-import { BlogPost } from '@/types'; // Importar BlogPost para usar Omit
+import { BlogPost } from '@/types';
 
 const blogPostSchema = z.object({
   title: z.string().min(5, { message: "El título debe tener al menos 5 caracteres." }).max(100, { message: "El título no debe exceder los 100 caracteres." }),
@@ -21,49 +21,74 @@ const blogPostSchema = z.object({
   content: z.string().min(50, { message: "El contenido debe tener al menos 50 caracteres." }),
 });
 
-// Definir el tipo del formulario infiriéndolo directamente del esquema Zod
 type BlogPostFormValues = z.infer<typeof blogPostSchema>;
 
-interface CreateBlogPostFormProps {
+interface BlogPostFormProps {
   userId: string;
   authorEmail: string;
+  initialData?: BlogPost; // Prop opcional para precargar datos en modo edición
+  onSubmissionSuccess?: () => void; // Callback para cuando la publicación es exitosa
 }
 
-const CreateBlogPostForm: React.FC<CreateBlogPostFormProps> = ({ userId, authorEmail }) => {
+const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initialData, onSubmissionSuccess }) => {
   const navigate = useNavigate();
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(blogPostSchema),
     defaultValues: {
       title: "",
-      author: authorEmail, // Pre-fill author with logged-in user's email
+      author: authorEmail,
       summary: "",
       image_url: "",
       content: "",
     },
   });
 
+  useEffect(() => {
+    if (initialData) {
+      form.reset({
+        title: initialData.title,
+        author: initialData.author,
+        summary: initialData.summary,
+        image_url: initialData.image_url,
+        content: initialData.content,
+      });
+    } else {
+      // Asegurarse de que el autor se pre-rellene correctamente al crear
+      form.setValue("author", authorEmail);
+    }
+  }, [initialData, authorEmail, form]);
+
   const onSubmit = async (values: BlogPostFormValues) => {
     try {
-      // Aserción de tipo para asegurar que 'values' coincide con el tipo esperado por createBlogPost
-      await createBlogPost(values as Omit<BlogPost, 'id' | 'date'>, userId);
-      toast.success("¡Publicación de blog creada con éxito!");
-      form.reset({
-        title: "",
-        author: authorEmail,
-        summary: "",
-        image_url: "",
-        content: "",
-      });
-      navigate('/blog'); // Redirigir al blog después de crear el post
+      if (initialData) {
+        // Modo edición
+        await updateBlogPost(initialData.id, values);
+        toast.success("¡Publicación de blog actualizada con éxito!");
+      } else {
+        // Modo creación
+        await createBlogPost(values, userId);
+        toast.success("¡Publicación de blog creada con éxito!");
+        form.reset({
+          title: "",
+          author: authorEmail,
+          summary: "",
+          image_url: "",
+          content: "",
+        });
+      }
+      onSubmissionSuccess?.(); // Ejecutar callback si existe
+      navigate('/blog'); // Redirigir al blog después de crear/actualizar el post
     } catch (error: any) {
-      console.error("Error al crear la publicación del blog:", error);
-      toast.error(error.message || "Ocurrió un error al crear la publicación.");
+      console.error("Error al procesar la publicación del blog:", error);
+      toast.error(error.message || "Ocurrió un error al procesar la publicación.");
     }
   };
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 bg-card rounded-lg shadow-lg">
-      <h3 className="text-2xl font-bold text-primary text-center">Crear Nueva Publicación de Blog</h3>
+      <h3 className="text-2xl font-bold text-primary text-center">
+        {initialData ? "Editar Publicación de Blog" : "Crear Nueva Publicación de Blog"}
+      </h3>
       <div>
         <Label htmlFor="title" className="text-left block mb-2">Título</Label>
         <Input
@@ -126,10 +151,10 @@ const CreateBlogPostForm: React.FC<CreateBlogPostFormProps> = ({ userId, authorE
         )}
       </div>
       <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-        {form.formState.isSubmitting ? "Publicando..." : "Publicar Blog Post"}
+        {form.formState.isSubmitting ? (initialData ? "Actualizando..." : "Publicando...") : (initialData ? "Actualizar Publicación" : "Publicar Blog Post")}
       </Button>
     </form>
   );
 };
 
-export default CreateBlogPostForm;
+export default BlogPostForm;

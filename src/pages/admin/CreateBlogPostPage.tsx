@@ -4,10 +4,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
-import CreateBlogPostForm from '@/components/forms/CreateBlogPostForm';
+import BlogPostForm from '@/components/forms/BlogPostForm'; // Usar el nuevo nombre
 import AuthForm from '@/components/AuthForm';
 import { getCurrentUser, onAuthStateChange, signOut } from '@/services/forumService';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { User as UserIcon, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -69,7 +68,7 @@ const CreateBlogPostPage = () => {
         <span>Cerrar Sesión</span>
       </Button>
       <div className="w-full mt-8">
-        <CreateBlogPostForm userId={user.id} authorEmail={user.email} />
+        <BlogPostForm userId={user.id} authorEmail={user.email} />
       </div>
     </div>
   );

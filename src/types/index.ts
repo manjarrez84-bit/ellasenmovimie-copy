@@ -6,6 +6,7 @@ export interface BlogPost {
   summary: string;
   image_url: string;
   content: string;
+  user_id: string; // Añadido para asociar el post con el usuario
 }
 
 export interface ForumPost {

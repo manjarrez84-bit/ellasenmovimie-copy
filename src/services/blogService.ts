@@ -45,6 +45,7 @@ Se graduaron 15 mujeres en educación financiera, e igual número de graduadas e
   <img src="/noti222.jpeg" alt="Taller de Introducción a las energías renovables" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
 </div>
   `,
+  user_id: 'static-user-id', // ID de usuario ficticio para el post estático
 };
 
 export const getAllPosts = async (): Promise<BlogPost[]> => {
@@ -55,14 +56,11 @@ export const getAllPosts = async (): Promise<BlogPost[]> => {
 
   if (error) {
     console.error('Error fetching posts:', error);
-    // Si hay un error de Supabase, devolvemos solo el post estático para no romper la app
     return [STATIC_TEST_POST];
   }
 
-  // Combinamos los posts de Supabase con el post estático
   const supabasePosts = data as BlogPost[];
   
-  // Evitamos duplicados si el post estático ya existe (aunque tiene un ID único)
   const combinedPosts = [STATIC_TEST_POST, ...supabasePosts].filter((post, index, self) => 
     index === self.findIndex((t) => (
       t.id === post.id
@@ -94,7 +92,7 @@ export const getPostById = async (id: string): Promise<BlogPost | null> => {
   return data as BlogPost | null;
 };
 
-export const createBlogPost = async (post: Omit<BlogPost, 'id' | 'date'>, userId: string): Promise<BlogPost> => {
+export const createBlogPost = async (post: Omit<BlogPost, 'id' | 'date' | 'user_id'>, userId: string): Promise<BlogPost> => {
   const { data, error } = await supabase
     .from('blog_posts')
     .insert([
@@ -116,4 +114,38 @@ export const createBlogPost = async (post: Omit<BlogPost, 'id' | 'date'>, userId
   }
 
   return data as BlogPost;
+};
+
+export const updateBlogPost = async (id: string, post: Omit<BlogPost, 'id' | 'date' | 'user_id'>): Promise<BlogPost> => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update({ 
+      title: post.title, 
+      author: post.author, 
+      summary: post.summary, 
+      image_url: post.image_url, 
+      content: post.content,
+    })
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(`Error updating blog post with id ${id}:`, error);
+    throw new Error('No se pudo actualizar la publicación del blog.');
+  }
+
+  return data as BlogPost;
+};
+
+export const deleteBlogPost = async (id: string): Promise<void> => {
+  const { error } = await supabase
+    .from('blog_posts')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error(`Error deleting blog post with id ${id}:`, error);
+    throw new Error('No se pudo eliminar la publicación del blog.');
+  }
 };
