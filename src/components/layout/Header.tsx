@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getCurrentUser, onAuthStateChange } from '@/services/forumService'; // Import auth services
+import { getUserProfile } from '@/services/profileService'; // Import profile service
 
 const navItems = [
   { href: '/', label: 'Inicio' },
@@ -20,6 +21,7 @@ const navItems = [
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<any | null>(null); // State to hold user info
+  const [isAdmin, setIsAdmin] = useState(false); // State to hold admin status
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,16 +31,22 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Effect to check user authentication status
+  // Effect to check user authentication status and role
   useEffect(() => {
-    const checkUser = async () => {
+    const checkUserAndRole = async () => {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
+      if (currentUser) {
+        const profile = await getUserProfile(currentUser.id);
+        setIsAdmin(profile?.role === 'admin');
+      } else {
+        setIsAdmin(false);
+      }
     };
 
-    checkUser(); // Initial check
+    checkUserAndRole(); // Initial check
     const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((event, session) => {
-      setUser(session?.user || null);
+      checkUserAndRole(); // Re-check on auth state change
     });
 
     return () => {
@@ -70,6 +78,11 @@ const Header = () => {
               Crear Post
             </Link>
           )}
+          {isAdmin && ( // Show "Admin" link only if user is admin
+            <Link to="/admin/dashboard" className={linkClasses}>
+              Admin
+            </Link>
+          )}
           <Link to="/donate">
             <Button>Donar</Button>
           </Link>
@@ -93,6 +106,11 @@ const Header = () => {
                 {user && ( // Show "Crear Post" link only if user is logged in
                   <SheetClose asChild>
                     <Link to="/admin/blog/new">Crear Post</Link>
+                  </SheetClose>
+                )}
+                {isAdmin && ( // Show "Admin" link only if user is admin
+                  <SheetClose asChild>
+                    <Link to="/admin/dashboard">Admin</Link>
                   </SheetClose>
                 )}
                 <SheetClose asChild>
