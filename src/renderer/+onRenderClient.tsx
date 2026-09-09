@@ -1,3 +1,5 @@
+"use client";
+
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 import type { PageContext } from './types';
@@ -24,7 +26,7 @@ async function onRenderClient(pageContext: PageContext) {
   const container = document.getElementById('react-root');
   if (!container) throw new Error('No se encontró el elemento #react-root');
 
-  if (pageContext.is  Hydration) {
+  if (pageContext.isHydration) {
     root = ReactDOM.hydrateRoot(container, page);
   } else {
     if (!root) {
