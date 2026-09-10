@@ -64,8 +64,6 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.9",
-    "vike": "0.4.266",
-    "vike-react": "0.4.180",
     "zod": "^3.24.3"
   },
   "devDependencies": {
@@ -85,6 +83,6 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^5.0.0"
+    "vite": "^5.4.14"
   }
 }

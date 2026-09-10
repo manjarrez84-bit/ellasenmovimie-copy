@@ -1,4 +1,10 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 import './globals.css';
 
-// Vike handles the client-side rendering entry point through src/renderer/+onRenderClient.tsx.
-// This file is primarily for global imports like CSS.
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
