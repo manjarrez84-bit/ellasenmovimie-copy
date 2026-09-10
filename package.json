@@ -65,7 +65,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.9",
     "vike": "^1.0.0",
-    "vike-react": "^1.0.0",
+    "vike-react": "^0.6.26",
     "zod": "^3.24.3"
   },
   "devDependencies": {
