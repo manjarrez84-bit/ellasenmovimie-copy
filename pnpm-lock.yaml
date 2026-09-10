@@ -169,7 +169,10 @@ importers:
         version: 0.9.9(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       vike:
         specifier: ^0.4.180
-        version: 0.4.266(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1))
+        version: 0.4.266(react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1))
+      vike-react:
+        specifier: ^0.6.26
+        version: 0.6.26(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vike@0.4.266(react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1)))
       zod:
         specifier: ^3.23.8
         version: 3.24.3
@@ -2220,6 +2223,10 @@ packages:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
 
+  isbot-fast@1.2.0:
+    resolution: {integrity: sha512-twjuQzy2gKMDVfKGQyQqrx6Uy4opu/fiVUTTpdqtFsd7OQijIp5oXvb27n5EemYXaijh5fomndJt/SPRLsEdSg==}
+    engines: {node: '>=6.0.0'}
+
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
@@ -2715,6 +2722,12 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  react-streaming@0.4.20:
+    resolution: {integrity: sha512-jUZqdDVrXcKCNR1PGclIK9Ggeb1+8jP6WRWDSYbu8OsOCHiu/F+PGtVx+0thIoSzOdKxaNMSowk0bNlLsPv2jw==}
+    peerDependencies:
+      react: '>=19'
+      react-dom: '>=19'
+
   react-style-singleton@2.2.3:
     resolution: {integrity: sha512-b6jSvxvVnyptAiLjbkWLE/lOnR4lfTtDAl+eUC7RZy+QQWc6wRzIV2CE6xBuMmDxc2qIihtDCZD5NPOFl7fRBQ==}
     engines: {node: '>=10'}
@@ -3055,6 +3068,13 @@ packages:
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
+
+  vike-react@0.6.26:
+    resolution: {integrity: sha512-zkwEHeYqxqR7US72u/ga+udKzM2K9RmWaaYtZYGZndlbGEOgu92z8HIYWTZ3C+8Kls8zmp2NLNVU7wTmwGXTgg==}
+    peerDependencies:
+      react: '>=19'
+      react-dom: '>=19'
+      vike: '>=0.4.250'
 
   vike@0.4.266:
     resolution: {integrity: sha512-RV7KqAmuKDJqzO7JCdKYIke6XqBoBkZXq6EBe5M9o4VdU1/SS8e3BqjzpfIXQprBBYS2XvEA028OvYyK9ewcnA==}
@@ -5184,6 +5204,8 @@ snapshots:
 
   is-plain-obj@4.1.0: {}
 
+  isbot-fast@1.2.0: {}
+
   isexe@2.0.0: {}
 
   jackspeak@3.4.3:
@@ -5860,6 +5882,15 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
+  react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@brillout/import': 0.2.6
+      '@brillout/json-serializer': 0.5.25
+      '@brillout/picocolors': 1.0.31
+      isbot-fast: 1.2.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   react-style-singleton@2.2.3(@types/react@18.3.20)(react@18.3.1):
     dependencies:
       get-nonce: 1.0.1
@@ -6287,7 +6318,14 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  vike@0.4.266(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1)):
+  vike-react@0.6.26(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vike@0.4.266(react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1))):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-streaming: 0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      vike: 0.4.266(react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1))
+
+  vike@0.4.266(react-streaming@0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(srvx@0.12.8)(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1)):
     dependencies:
       '@babel/core': 7.29.7
       '@babel/types': 7.29.8
@@ -6312,6 +6350,7 @@ snapshots:
       tinyglobby: 0.2.17
       vite-plugin-wrapper: 0.1.1(vite@6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1))
     optionalDependencies:
+      react-streaming: 0.4.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       vite: 6.3.4(@types/node@22.14.1)(jiti@1.21.7)(yaml@2.7.1)
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
