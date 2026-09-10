@@ -1,6 +1,4 @@
-import { startReactApp } from 'vike/client';
 import './globals.css';
 
-startReactApp({
-  // Puedes pasar opciones de configuración aquí si es necesario
-});
+// Vike handles the client-side rendering entry point through src/renderer/+onRenderClient.tsx.
+// This file is primarily for global imports like CSS.

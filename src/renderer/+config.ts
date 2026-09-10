@@ -5,5 +5,5 @@ export default {
   passToClient: ['pageProps', 'routeParams'],
   clientRouting: true,
   hydrationCanBeAborted: true,
-  extends: '@vike/react',
+  extends: '@vike/react', // This should now resolve correctly after installing the package
 } satisfies Config;
