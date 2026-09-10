@@ -5,5 +5,5 @@ export default {
   passToClient: ['pageProps', 'routeParams'],
   clientRouting: true,
   hydrationCanBeAborted: true,
-  extends: 'vike-react', // Confirmed to use 'vike-react'
-} satisfies Config;
+  extends: 'vike-react/config', // This is the correct string literal for extending vike-react
+}; // Removed 'satisfies Config' for troubleshooting
