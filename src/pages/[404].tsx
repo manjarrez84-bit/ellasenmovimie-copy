@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'vike-react/Link';
 import { AttributionFooter } from "@/components/AttributionFooter";
 import Header from '@/components/layout/Header';

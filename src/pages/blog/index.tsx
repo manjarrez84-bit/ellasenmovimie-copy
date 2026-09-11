@@ -8,7 +8,7 @@ import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
 import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 import { PlusCircle } from 'lucide-react';
 
 const BlogPage = () => {
@@ -39,8 +39,8 @@ const BlogPage = () => {
     fetchPosts();
     checkUser();
 
-    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((_event, _session) => {
-      setUser(_session?.user || null);
+    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
       fetchPosts();
     });
 

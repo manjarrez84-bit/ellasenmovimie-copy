@@ -1,4 +1,5 @@
-import { Link } from 'vike-react/Link';
+import React from 'react';
+import Link from '@/components/Link';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import NewsletterForm from '../forms/NewsletterForm';
 

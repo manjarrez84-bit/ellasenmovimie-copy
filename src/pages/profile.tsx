@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
+import Link from '@/components/Link';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProfilePage = () => {
@@ -37,7 +38,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchUserProfile();
-    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
+    const { data: { subscription } } = onAuthStateChange((event, session) => {
       fetchUserProfile();
     });
 

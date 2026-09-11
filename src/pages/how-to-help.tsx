@@ -1,7 +1,8 @@
+import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 import { HandHeart, DollarSign, Users, Facebook, Twitter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';

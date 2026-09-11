@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { usePageContext } from 'vike';
+import { usePageContext } from 'vike/react';
+import Link from '@/components/Link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -11,6 +12,7 @@ import { User as UserIcon, LogOut, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { BlogPost } from '@/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const EditBlogPostPage = () => {
   const { routeParams, navigate } = usePageContext();
@@ -55,7 +57,7 @@ const EditBlogPostPage = () => {
     checkUser();
     fetchPost();
 
-    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
+    const { data: { subscription } } = onAuthStateChange((event, session) => {
       checkUser();
     });
 

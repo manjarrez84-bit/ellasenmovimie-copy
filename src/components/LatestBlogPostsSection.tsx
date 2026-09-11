@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Link } from 'vike-react/Link';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { getAllPosts } from '@/services/blogService';
 import { BlogPost } from '@/types';
@@ -18,6 +19,7 @@ const LatestBlogPostsSection = () => {
       try {
         setLoading(true);
         const fetchedPosts = await getAllPosts();
+        // Tomar solo las 3 publicaciones más recientes
         setPosts(fetchedPosts.slice(0, 3)); 
       } catch (err) {
         console.error("Error fetching latest blog posts:", err);
