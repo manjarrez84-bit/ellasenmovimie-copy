@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'vike-react/Link';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import NewsletterForm from '../forms/NewsletterForm';
 
@@ -7,12 +7,16 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground py-12 dark:bg-black border-t border-primary-foreground/10">
       <div className="container mx-auto px-4">
+        
+        {/* La imagen cintilla.png global ha sido eliminada de aquí */}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
           {/* Columna 1: Info y Redes Sociales */}
           <div>
             <h3 className="text-xl font-bold mb-2 text-balance">Ellas en Movimiento, A.C.</h3>
             <p className="text-sm mb-4 text-balance">Apoyando a mujeres en situación de violencia y pobreza.</p>
             
+            {/* Imagen cintilla.png insertada aquí, debajo del texto */}
             <div className="mb-4">
               <img 
                 src="/cintilla.png" 

@@ -10,7 +10,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
-import { useGA4 } from '@/hooks/useGA4';
 
 // Esquema de validación con Zod
 const contactFormSchema = z.object({
@@ -33,8 +32,6 @@ const ContactForm = () => {
     },
   });
 
-  const { trackFormSubmit } = useGA4();
-
   const onSubmit = async (values: ContactFormValues) => {
     try {
       const { error } = await supabase
@@ -52,7 +49,6 @@ const ContactForm = () => {
         throw error;
       }
 
-      trackFormSubmit('contact_form');
       toast.success("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.");
       form.reset(); // Limpiar el formulario después del envío
     } catch (error) {
