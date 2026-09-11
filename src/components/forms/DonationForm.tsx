@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
 import { Heart } from 'lucide-react';
+import { useGA4 } from '@/hooks/useGA4';
 
 const donationFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre es requerido." }),
@@ -24,11 +25,12 @@ const DonationForm = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [finalAmount, setFinalAmount] = useState(0);
-
   const form = useForm<DonationFormValues>({
     resolver: zodResolver(donationFormSchema),
     defaultValues: { name: "", email: "" },
   });
+
+  const { trackEvent } = useGA4();
 
   const onSubmit = async (values: DonationFormValues) => {
     const amount = customAmount ? parseFloat(customAmount) : parseInt(selectedAmount, 10);
@@ -44,6 +46,11 @@ const DonationForm = () => {
         .insert([{ name: values.name, email: values.email, amount }]);
 
       if (error) throw error;
+
+      trackEvent('donation', {
+        amount: amount,
+        currency: 'MXN',
+      });
 
       setFinalAmount(amount);
       setIsSubmitted(true);
