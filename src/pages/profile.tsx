@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProfilePage = () => {

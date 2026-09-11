@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 
 const CallToActionSection = () => {
   return (

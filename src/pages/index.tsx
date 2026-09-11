@@ -6,7 +6,7 @@ import CallToActionSection from '@/components/CallToActionSection';
 import ContactSection from '@/components/ContactSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import LatestBlogPostsSection from '@/components/LatestBlogPostsSection';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 
 const Index = () => {
   return (

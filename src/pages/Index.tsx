@@ -6,13 +6,13 @@ import CallToActionSection from '@/components/CallToActionSection';
 import ContactSection from '@/components/ContactSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import LatestBlogPostsSection from '@/components/LatestBlogPostsSection';
-import { Link } from 'react-router-dom'; // Importar Link
+import Link from '@/components/Link';
 
 const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow pt-24"> {/* Aumentado pt-24 para compensar el header fijo */}
+      <main className="flex-grow pt-24">
         
         {/* Sección con la imagen introellas22.png (sin sombra ni marco) */}
         <section className="py-12 bg-muted/30">
@@ -55,34 +55,13 @@ const Index = () => {
         <AnimatedSection>
           <LatestBlogPostsSection />
         </AnimatedSection>
-        
-        {/* NUEVA SECCIÓN DE IMÁGENES (EJES DE ATENCIÓN) */}
-        <AnimatedSection>
-          <section className="py-16 bg-background"> {/* Fondo cambiado a bg-background (blanco/oscuro) */}
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
-              {/* Ajuste: grid-cols-6 para mostrar 6 elementos en una fila, incluso en móvil si es posible, o usando flexbox si la cuadrícula es demasiado restrictiva. Usaremos grid-cols-3 en móvil y grid-cols-6 en pantallas grandes para asegurar la visibilidad. */}
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 items-center max-w-full mx-auto">
-                {/* Eje 1 con hipervínculo a la imagen 1515.png */}
-                <Link to="/programs#imagen-fortalecimiento-comunitario" className="block hover:opacity-80 transition-opacity duration-200">
-                  <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
-                </Link>
-                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain" />
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
 
-        {/* Sección de Alianzas y Certificaciones */}
+        {/* Sección de Alianzas y Certificaciones (movida más arriba) */}
         <AnimatedSection>
-          <section className="py-16 bg-background"> {/* Cambiado a bg-background para que los logos con fondo blanco se vean transparentes en modo claro */}
+          <section className="py-16 bg-background">
             <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">NUESTRAS ALIANZAS</h2> {/* Título añadido y aumentado */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center max-w-5xl mx-auto"> {/* Cambiado a grid-cols-4 para acomodar la nueva imagen */}
+              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">NUESTRAS ALIANZAS</h2>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center max-w-5xl mx-auto">
                 <img 
                   src="/ALIANZA.png" 
                   alt="Alianza 1" 
@@ -93,7 +72,6 @@ const Index = () => {
                   alt="Alianza 2" 
                   className="mx-auto w-full h-auto object-contain" 
                 />
-                {/* Ajuste de tamaño para alian.jpg */}
                 <img 
                   src="/alian.jpg" 
                   alt="Alianza 3" 
@@ -108,9 +86,26 @@ const Index = () => {
             </div>
           </section>
         </AnimatedSection>
-        
-        {/* CallToActionSection original eliminado de aquí */}
-        
+
+        {/* NUEVA SECCIÓN DE IMÁGENES (EJES DE ATENCIÓN) */}
+        <AnimatedSection>
+          <section className="py-16 bg-background">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">EJES DE ATENCIÓN</h2>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 items-center max-w-full mx-auto">
+                <Link to="/programs#imagen-fortalecimiento-comunitario" className="block hover:opacity-80 transition-opacity duration-200">
+                  <img src="/ELL22.png" alt="Eje 1" className="mx-auto w-full h-auto object-contain" />
+                </Link>
+                <img src="/ELL23.png" alt="Eje 2" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL24.png" alt="Eje 3" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL25.png" alt="Eje 4" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL26.PNG" alt="Eje 5" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ELL27.png" alt="Eje 6" className="mx-auto w-full h-auto object-contain" />
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+
         <AnimatedSection>
           <ContactSection />
         </AnimatedSection>
