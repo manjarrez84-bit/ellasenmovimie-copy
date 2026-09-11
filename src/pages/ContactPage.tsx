@@ -1,9 +1,8 @@
-import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ContactSection from '@/components/ContactSection';
 import { AttributionFooter } from '@/components/AttributionFooter';
-import ContactForm from '@/components/forms/ContactForm'; // Importar el nuevo componente
+import ContactForm from '@/components/forms/ContactForm';
 
 const ContactPage = () => {
   return (
@@ -19,12 +18,11 @@ const ContactPage = () => {
             </p>
 
             <div className="max-w-2xl mx-auto bg-card p-8 rounded-lg shadow-lg">
-              <ContactForm /> {/* Usar el componente ContactForm */}
+              <ContactForm />
             </div>
           </div>
         </section>
 
-        {/* NUEVA SECCIÓN DE VIDEO: movi.mp4 */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <video 
@@ -40,7 +38,6 @@ const ContactPage = () => {
             </video>
           </div>
         </section>
-        {/* FIN NUEVA SECCIÓN DE VIDEO */}
       </main>
       <Footer />
       <AttributionFooter />

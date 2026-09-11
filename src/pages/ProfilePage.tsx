@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -10,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProfilePage = () => {
@@ -31,18 +29,18 @@ const ProfilePage = () => {
       } catch (error) {
         console.error("Error fetching user profile:", error);
         toast.error("Error al cargar el perfil del usuario.");
-        setUserRole('user'); // Default to user role on error
+        setUserRole('user');
       }
     } else {
       setUserRole(null);
-      navigate('/forum'); // Redirect to forum/login if not logged in
+      navigate('/forum');
     }
     setLoading(false);
   }, [navigate]);
 
   useEffect(() => {
     fetchUserProfile();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       fetchUserProfile();
     });
 
@@ -80,7 +78,7 @@ const ProfilePage = () => {
   }
 
   if (!user) {
-    return null; // Should redirect via navigate('/forum')
+    return null;
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -59,7 +59,7 @@ const BlogPostPage = () => {
     try {
       await deleteBlogPost(post.id);
       toast.success("Publicación eliminada con éxito.");
-      navigate('/blog'); // Redirigir al blog después de eliminar
+      navigate('/blog');
     } catch (error: any) {
       console.error("Error al eliminar la publicación:", error);
       toast.error(error.message || "Ocurrió un error al eliminar la publicación.");

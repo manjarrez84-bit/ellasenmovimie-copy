@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -39,9 +39,9 @@ const BlogPage = () => {
     fetchPosts();
     checkUser();
 
-    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
-      fetchPosts(); // Refrescar posts si el estado de autenticación cambia
+      fetchPosts();
     });
 
     return () => {
@@ -74,7 +74,6 @@ const BlogPage = () => {
                 Mantente al día con nuestras últimas noticias, historias de impacto y próximos eventos.
               </p>
               
-              {/* Botón para crear post, visible solo si el usuario está logueado */}
               {user && (
                 <div className="mt-6">
                   <Link to="/admin/blog/new">

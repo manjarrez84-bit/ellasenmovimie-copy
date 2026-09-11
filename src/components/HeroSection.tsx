@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from '@/components/ui/button';
-import { Link } from 'vike-react/Link';
+import Link from 'vike-react/Link';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {

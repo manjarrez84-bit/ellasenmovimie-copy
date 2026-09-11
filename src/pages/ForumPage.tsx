@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -35,12 +33,12 @@ const ForumPage = () => {
   const handleAuthChange = useCallback(async () => {
     const currentUser = await getCurrentUser();
     setUser(currentUser);
-    fetchPosts(); // Refresh posts when auth state changes
+    fetchPosts();
   }, [fetchPosts]);
 
   useEffect(() => {
-    handleAuthChange(); // Initial check
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    handleAuthChange();
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       handleAuthChange();
     });
 

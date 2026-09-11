@@ -16,3 +16,8 @@ declare module 'vike-react/usePageContext' {
   import { usePageContext as usePageContextImpl } from 'vike/types';
   export default usePageContextImpl;
 }
+
+declare module 'vike/react' {
+  import { usePageContext as usePageContextImpl } from 'vike/types';
+  export function usePageContext(): Record<string, any>;
+}

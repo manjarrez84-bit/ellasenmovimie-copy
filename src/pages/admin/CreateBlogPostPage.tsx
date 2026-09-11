@@ -1,10 +1,8 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
-import BlogPostForm from '@/components/forms/BlogPostForm'; // Usar el nuevo nombre
+import BlogPostForm from '@/components/forms/BlogPostForm';
 import AuthForm from '@/components/AuthForm';
 import { getCurrentUser, onAuthStateChange, signOut } from '@/services/forumService';
 import { User as UserIcon, LogOut } from 'lucide-react';
@@ -24,7 +22,7 @@ const CreateBlogPostPage = () => {
 
   useEffect(() => {
     checkUser();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       checkUser();
     });
 

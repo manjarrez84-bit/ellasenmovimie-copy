@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -8,7 +8,7 @@ import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
 import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import Link from '@/components/Link';
+import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
 
 const BlogPage = () => {
@@ -39,7 +39,7 @@ const BlogPage = () => {
     fetchPosts();
     checkUser();
 
-    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
       fetchPosts();
     });

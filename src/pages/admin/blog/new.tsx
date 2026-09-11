@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { usePageContext } from 'vike/react';
-import Link from '@/components/Link';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -12,7 +10,6 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 const CreateBlogPostPage = () => {
-  const { navigate } = usePageContext();
   const [user, setUser] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +22,7 @@ const CreateBlogPostPage = () => {
 
   useEffect(() => {
     checkUser();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       checkUser();
     });
 

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -13,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { BlogPost } from '@/types';
-import { Skeleton } from '@/components/ui/skeleton';
 
 const EditBlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -58,7 +55,7 @@ const EditBlogPostPage = () => {
     checkUser();
     fetchPost();
 
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       checkUser();
     });
 
@@ -72,7 +69,7 @@ const EditBlogPostPage = () => {
       await signOut();
       toast.success("Sesión cerrada con éxito.");
       setUser(null);
-      navigate('/blog'); // Redirigir al blog después de cerrar sesión
+      navigate('/blog');
     } catch (error: any) {
       console.error("Error al cerrar sesión:", error);
       toast.error(error.message || "Ocurrió un error al cerrar sesión.");

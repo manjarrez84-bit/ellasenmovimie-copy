@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -31,14 +29,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Edit, Trash2, Loader2 } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
 
 const AdminDashboardPage = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<any | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchPosts = useCallback(async () => {
@@ -57,18 +53,17 @@ const AdminDashboardPage = () => {
   const checkUserAndRole = useCallback(async () => {
     setLoading(true);
     const currentUser = await getCurrentUser();
-    setUser(currentUser);
 
     if (currentUser) {
       try {
         const profile = await getUserProfile(currentUser.id);
         if (profile && profile.role === 'admin') {
           setIsAdmin(true);
-          fetchPosts(); // Fetch posts only if admin
+          fetchPosts();
         } else {
           setIsAdmin(false);
           toast.error("Acceso denegado. Solo los administradores pueden acceder a esta página.");
-          navigate('/'); // Redirect non-admins
+          navigate('/');
         }
       } catch (profileError) {
         console.error("Error fetching user profile:", profileError);
@@ -79,14 +74,14 @@ const AdminDashboardPage = () => {
     } else {
       setIsAdmin(false);
       toast.error("Debes iniciar sesión para acceder al panel de administración.");
-      navigate('/forum'); // Redirect to login/forum page
+      navigate('/forum');
     }
     setLoading(false);
   }, [fetchPosts, navigate]);
 
   useEffect(() => {
     checkUserAndRole();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       checkUserAndRole();
     });
 
@@ -99,7 +94,7 @@ const AdminDashboardPage = () => {
     try {
       await deleteBlogPost(postId);
       toast.success("Publicación eliminada con éxito.");
-      fetchPosts(); // Refresh the list
+      fetchPosts();
     } catch (error: any) {
       console.error("Error al eliminar la publicación:", error);
       toast.error(error.message || "Ocurrió un error al eliminar la publicación.");
@@ -121,8 +116,6 @@ const AdminDashboardPage = () => {
   }
 
   if (!isAdmin) {
-    // This case should ideally be handled by the redirect in checkUserAndRole,
-    // but as a fallback, we can show a message.
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
