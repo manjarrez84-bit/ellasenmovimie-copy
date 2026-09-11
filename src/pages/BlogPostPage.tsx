@@ -14,6 +14,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { toast } from 'sonner';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import SEOHead from '@/components/SEOHead';
 
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -82,6 +83,13 @@ const BlogPostPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title={post.title}
+        description={post.summary}
+        path={`/blog/${post.id}`}
+        image={post.image_url}
+        type="article"
+      />
       <Header />
       <main className="flex-grow py-24 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">

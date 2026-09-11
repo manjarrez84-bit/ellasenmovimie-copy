@@ -5,6 +5,7 @@ import Link from '@/components/Link';
 import { HandHeart, DollarSign, Users, Facebook, Twitter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
+import SEOHead from '@/components/SEOHead';
 
 const HowToHelpPage = () => {
   const shareUrl = window.location.origin;
@@ -14,6 +15,11 @@ const HowToHelpPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Cómo Ayudar"
+        description="Hay muchas maneras de contribuir: haz una donación, sé voluntario o difunde nuestra causa. Tu apoyo es fundamental para Ellas en Movimiento."
+        path="/how-to-help"
+      />
       <Header />
       <main className="flex-grow">
         <section className="relative py-16 pt-32 bg-muted/30 text-center overflow-hidden">

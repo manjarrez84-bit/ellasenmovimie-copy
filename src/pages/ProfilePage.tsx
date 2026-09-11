@@ -10,6 +10,7 @@ import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components/ui/skeleton';
+import SEOHead from '@/components/SEOHead';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -56,6 +57,11 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Mi Perfil"
+        description="Información de tu cuenta en Ellas en Movimiento."
+        path="/profile"
+      />
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-2xl text-center">

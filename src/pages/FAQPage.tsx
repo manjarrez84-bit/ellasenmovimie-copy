@@ -2,6 +2,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AttributionFooter } from '@/components/AttributionFooter';
+import SEOHead from '@/components/SEOHead';
 
 const FAQPage = () => {
   const faqs = [
@@ -15,6 +16,11 @@ const FAQPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Preguntas Frecuentes"
+        description="Respuestas a las preguntas más frecuentes sobre Ellas en Movimiento, A.C. Servicios gratuitos, donaciones, voluntariado y más."
+        path="/faq"
+      />
       <Header />
       <main className="flex-grow">
         <section className="py-24 bg-muted/30">

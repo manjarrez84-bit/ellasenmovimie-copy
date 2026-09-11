@@ -11,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
+import SEOHead from '@/components/SEOHead';
 
 const ForumPage = () => {
   const [posts, setPosts] = useState<ForumPost[]>([]);
@@ -51,6 +52,11 @@ const ForumPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Foro"
+        description="Foro de la comunidad de Ellas en Movimiento. Comparte ideas, haz preguntas y conéctate con nuestra comunidad."
+        path="/forum"
+      />
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">

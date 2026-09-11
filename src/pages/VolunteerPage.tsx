@@ -3,10 +3,16 @@ import Footer from '@/components/layout/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import VolunteerForm from '@/components/forms/VolunteerForm';
+import SEOHead from '@/components/SEOHead';
 
 const VolunteerPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Voluntariado"
+        description="Sé parte de nuestro equipo de voluntarios en Ellas en Movimiento. Tu tiempo y talento son invaluables para empoderar a más mujeres."
+        path="/volunteer"
+      />
       <Header />
       <main className="flex-grow">
         <section className="py-16 bg-background text-center">

@@ -8,6 +8,7 @@ import { getCurrentUser, onAuthStateChange, signOut } from '@/services/forumServ
 import { User as UserIcon, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import SEOHead from '@/components/SEOHead';
 
 const CreateBlogPostPage = () => {
   const [user, setUser] = useState<any | null>(null);
@@ -52,6 +53,11 @@ const CreateBlogPostPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Crear Publicación"
+        description="Crea una nueva publicación de blog para Ellas en Movimiento."
+        path="/admin/blog/new"
+      />
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">

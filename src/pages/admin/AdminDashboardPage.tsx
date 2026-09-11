@@ -12,6 +12,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Edit, Trash2, Loader2 } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const AdminDashboardPage = () => {
   const navigate = useNavigate();
@@ -81,6 +82,11 @@ const AdminDashboardPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="Panel de Administración"
+        description="Panel de administración del blog de Ellas en Movimiento."
+        path="/admin/dashboard"
+      />
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-6xl">

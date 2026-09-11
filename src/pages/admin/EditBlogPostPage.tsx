@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { BlogPost } from '@/types';
+import SEOHead from '@/components/SEOHead';
 
 const EditBlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -93,6 +94,11 @@ const EditBlogPostPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title={`Editar: ${post.title}`}
+        description={`Edita la publicación: ${post.title}`}
+        path={`/admin/blog/edit/${post.id}`}
+      />
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
