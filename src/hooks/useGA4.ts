@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect } from 'react';
-import { logPageView, logEvent } from '@/services/analytics';
+import { logPageView, logEvent, logDownload, logClick, logFormSubmit } from '@/services/analytics';
 import { useLocation } from 'react-router-dom';
 
 /**
