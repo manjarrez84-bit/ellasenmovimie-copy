@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BlogPost } from '@/types';
@@ -17,15 +16,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import Link from '@/components/Link';
 
 interface BlogPostCardProps {
   post: BlogPost;
-  onPostDeleted?: () => void; // Callback para refrescar la lista después de eliminar
+  onPostDeleted?: () => void;
 }
 
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onPostDeleted }) => {
-  // Usar un hook para obtener el usuario actual. Si no existe, lo crearé.
-  // Por ahora, usaré getCurrentUser directamente para simplificar.
   const [currentUser, setCurrentUser] = React.useState<any | null>(null);
 
   React.useEffect(() => {
@@ -43,7 +41,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ post, onPostDeleted }) => {
     try {
       await deleteBlogPost(post.id);
       toast.success("Publicación eliminada con éxito.");
-      onPostDeleted?.(); // Llama al callback para refrescar la lista
+      onPostDeleted?.();
     } catch (error: any) {
       console.error("Error al eliminar la publicación:", error);
       toast.error(error.message || "Ocurrió un error al eliminar la publicación.");

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -8,12 +10,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
+import { usePageContext } from 'vike-react/usePageContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import SEOHead from '@/components/SEOHead';
 
 const ProfilePage = () => {
-  const navigate = useNavigate();
+  const pageContext = usePageContext() as any;
+  const navigate = pageContext.router.navigate;
   const [user, setUser] = useState<any | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -84,3 +87,6 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
+export { route };
+const route = { route: '/profile', title: 'Mi Perfil' };

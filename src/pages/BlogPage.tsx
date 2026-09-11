@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -109,3 +111,6 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+
+export { route };
+const route = { route: '/blog', title: 'Blog' };

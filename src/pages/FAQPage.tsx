@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -47,3 +49,6 @@ const FAQPage = () => {
 };
 
 export default FAQPage;
+
+export { route };
+const route = { route: '/faq', title: 'Preguntas Frecuentes' };

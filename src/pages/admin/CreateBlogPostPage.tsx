@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -80,3 +82,6 @@ const CreateBlogPostPage = () => {
 };
 
 export default CreateBlogPostPage;
+
+export { route };
+const route = { route: '/admin/blog/new', title: 'Crear Publicación' };

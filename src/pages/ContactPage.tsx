@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ContactSection from '@/components/ContactSection';
@@ -40,3 +42,6 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+
+export { route };
+const route = { route: '/contact', title: 'Contacto' };

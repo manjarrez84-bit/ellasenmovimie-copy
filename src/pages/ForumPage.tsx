@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -92,3 +94,6 @@ const ForumPage = () => {
 };
 
 export default ForumPage;
+
+export { route };
+const route = { route: '/forum', title: 'Foro' };

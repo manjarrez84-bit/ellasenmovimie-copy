@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -32,3 +34,6 @@ const VolunteerPage = () => {
 };
 
 export default VolunteerPage;
+
+export { route };
+const route = { route: '/volunteer', title: 'Voluntariado' };

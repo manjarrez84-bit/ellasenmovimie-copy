@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -25,3 +27,6 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
+export { route };
+const route = { route: '/about', title: 'Nosotras' };

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -8,14 +10,26 @@ import { getUserProfile } from '@/services/profileService';
 import { BlogPost } from '@/types';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { useNavigate, Link } from 'react-router-dom';
+import { usePageContext } from 'vike-react/usePageContext';
+import { Link } from 'vike-react/Link';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Edit, Trash2, Loader2 } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 
 const AdminDashboardPage = () => {
-  const navigate = useNavigate();
+  const pageContext = usePageContext() as any;
+  const navigate = pageContext.router.navigate;
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -132,3 +146,6 @@ const AdminDashboardPage = () => {
 };
 
 export default AdminDashboardPage;
+
+export { route };
+const route = { route: '/admin/dashboard', title: 'Panel de Administración' };

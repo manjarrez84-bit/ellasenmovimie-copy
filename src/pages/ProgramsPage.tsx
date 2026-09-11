@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProgramsSection from '@/components/ProgramsSection';
@@ -25,3 +27,6 @@ const ProgramsPage = () => {
 };
 
 export default ProgramsPage;
+
+export { route };
+const route = { route: '/programs', title: 'Programas' };

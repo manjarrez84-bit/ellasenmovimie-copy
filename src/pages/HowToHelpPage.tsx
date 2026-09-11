@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
@@ -54,3 +56,6 @@ const HowToHelpPage = () => {
 };
 
 export default HowToHelpPage;
+
+export { route };
+const route = { route: '/how-to-help', title: 'Cómo Ayudar' };

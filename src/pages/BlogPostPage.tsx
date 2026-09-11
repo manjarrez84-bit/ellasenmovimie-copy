@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link, usePageContext } from 'vike-react/Link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -13,12 +15,23 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { toast } from 'sonner';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import SEOHead from '@/components/SEOHead';
 
 const BlogPostPage = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const pageContext = usePageContext();
+  const id = pageContext.routeParams.id;
+  const navigate = pageContext.router.navigate;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<any | null>(null);
@@ -122,3 +135,6 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
+
+export { route };
+const route = { route: '/blog/:id', title: 'Publicación del Blog' };

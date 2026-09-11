@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 interface SEOHeadProps {
   title: string;
@@ -12,16 +11,13 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({ title, description, path, image, type = 'website' }: SEOHeadProps) => {
-  const location = useLocation();
   const baseUrl = 'https://ellasenmovimiento.org';
   const fullUrl = path ? `${baseUrl}${path}` : baseUrl;
   const ogImage = image || '/logo.png';
 
   useEffect(() => {
-    // Update document title
     document.title = `${title} | Ellas en Movimiento`;
 
-    // Update or create meta tags
     const updateMetaTag = (name: string, content: string, property: boolean = false) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
       let meta = document.querySelector(selector) as HTMLMetaElement;
@@ -47,7 +43,6 @@ const SEOHead = ({ title, description, path, image, type = 'website' }: SEOHeadP
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', ogImage);
 
-    // Update canonical URL
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
@@ -55,12 +50,7 @@ const SEOHead = ({ title, description, path, image, type = 'website' }: SEOHeadP
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', fullUrl);
-
-    // Update page path for tracking if needed
-    if (path) {
-      window.history.replaceState({}, '', path);
-    }
-  }, [title, description, fullUrl, ogImage, type, path, location.pathname]);
+  }, [title, description, fullUrl, ogImage, type, path]);
 
   return null;
 };

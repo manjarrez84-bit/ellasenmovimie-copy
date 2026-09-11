@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -9,13 +11,15 @@ import { getPostById } from '@/services/blogService';
 import { User as UserIcon, LogOut, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { usePageContext } from 'vike-react/usePageContext';
+import { Link } from 'vike-react/Link';
 import { BlogPost } from '@/types';
 import SEOHead from '@/components/SEOHead';
 
 const EditBlogPostPage = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const pageContext = usePageContext() as any;
+  const id = pageContext.routeParams.id;
+  const navigate = pageContext.router.navigate;
   const [user, setUser] = useState<any | null>(null);
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
@@ -117,3 +121,6 @@ const EditBlogPostPage = () => {
 };
 
 export default EditBlogPostPage;
+
+export { route };
+const route = { route: '/admin/blog/edit/:id', title: 'Editar Publicación' };

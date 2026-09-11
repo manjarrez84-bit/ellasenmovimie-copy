@@ -9,18 +9,19 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { createBlogPost, updateBlogPost } from '@/services/blogService';
-import { useNavigate } from 'react-router-dom';
-import { BlogPost, blogPostSchema, BlogPostFormValues } from '@/types'; // Importar desde types
+import { usePageContext } from 'vike-react/usePageContext';
+import { BlogPost, blogPostSchema, BlogPostFormValues } from '@/types';
 
 interface BlogPostFormProps {
   userId: string;
   authorEmail: string;
-  initialData?: BlogPost; // Prop opcional para precargar datos en modo edición
-  onSubmissionSuccess?: () => void; // Callback para cuando la publicación es exitosa
+  initialData?: BlogPost;
+  onSubmissionSuccess?: () => void;
 }
 
 const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initialData, onSubmissionSuccess }) => {
-  const navigate = useNavigate();
+  const pageContext = usePageContext() as any;
+  const navigate = pageContext.router.navigate;
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(blogPostSchema),
     defaultValues: {
@@ -42,7 +43,6 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
         content: initialData.content,
       });
     } else {
-      // Asegurarse de que el autor se pre-rellene correctamente al crear
       form.setValue("author", authorEmail);
     }
   }, [initialData, authorEmail, form]);
@@ -50,11 +50,9 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
   const onSubmit = async (values: BlogPostFormValues) => {
     try {
       if (initialData) {
-        // Modo edición
         await updateBlogPost(initialData.id, values);
         toast.success("¡Publicación de blog actualizada con éxito!");
       } else {
-        // Modo creación
         await createBlogPost(values, userId);
         toast.success("¡Publicación de blog creada con éxito!");
         form.reset({
@@ -65,8 +63,8 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
           content: "",
         });
       }
-      onSubmissionSuccess?.(); // Ejecutar callback si existe
-      navigate('/blog'); // Redirigir al blog después de crear/actualizar el post
+      onSubmissionSuccess?.();
+      navigate('/blog');
     } catch (error: any) {
       console.error("Error al procesar la publicación del blog:", error);
       toast.error(error.message || "Ocurrió un error al procesar la publicación.");
@@ -97,7 +95,7 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
           type="text"
           placeholder="Nombre del autor"
           {...form.register("author")}
-          disabled // Author is pre-filled and should not be changed by user
+          disabled
         />
         {form.formState.errors.author && (
           <p className="text-destructive text-sm mt-1">{form.formState.errors.author.message}</p>
