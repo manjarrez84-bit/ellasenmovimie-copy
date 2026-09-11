@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Link, usePageContext } from 'vike-react/Link';
+import { Link } from 'vike-react/Link';
+import { usePageContext } from 'vike-react/usePageContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
