@@ -9,11 +9,8 @@ const AboutPage = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        
-        <WhoWeAreSection /> {/* Now includes Mision/Vision/Values and starts with "¿Quiénes somos?" */}
-
+        <WhoWeAreSection />
         <ImpactStatsSection />
-
       </main>
       <Footer />
       <AttributionFooter />

@@ -9,11 +9,8 @@ const ProgramsPage = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        
         <ProgramsSection />
-        
         <DetailedProgramsList />
-
       </main>
       <Footer />
       <AttributionFooter />

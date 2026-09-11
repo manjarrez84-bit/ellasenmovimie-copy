@@ -16,26 +16,14 @@ const ContactPage = () => {
             <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-balance">
               Si tienes alguna pregunta, sugerencia o deseas más información, por favor, completa el siguiente formulario.
             </p>
-
             <div className="max-w-2xl mx-auto bg-card p-8 rounded-lg shadow-lg">
               <ContactForm />
             </div>
           </div>
         </section>
-
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 text-center max-w-4xl">
-            <video 
-              src="/movi.mp4" 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-auto rounded-lg shadow-xl"
-              aria-label="Video de Ellas en Movimiento"
-            >
-              Tu navegador no soporta la etiqueta de video.
-            </video>
+            <video src="/movi.mp4" autoPlay loop muted playsInline className="w-full h-auto rounded-lg shadow-xl" aria-label="Video de Ellas en Movimiento">Tu navegador no soporta la etiqueta de video.</video>
           </div>
         </section>
       </main>

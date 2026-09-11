@@ -19,15 +19,9 @@ const ForumPage = () => {
   const [user, setUser] = useState<any | null>(null);
 
   const fetchPosts = useCallback(async () => {
-    try {
-      setLoading(true);
-      const fetchedPosts = await getForumPosts();
-      setPosts(fetchedPosts);
-    } catch (err) {
-      setError('No se pudieron cargar las publicaciones del foro. Por favor, inténtalo de nuevo más tarde.');
-    } finally {
-      setLoading(false);
-    }
+    try { setLoading(true); const fetchedPosts = await getForumPosts(); setPosts(fetchedPosts); }
+    catch (err) { setError('No se pudieron cargar las publicaciones del foro.'); }
+    finally { setLoading(false); }
   }, []);
 
   const handleAuthChange = useCallback(async () => {
@@ -38,33 +32,19 @@ const ForumPage = () => {
 
   useEffect(() => {
     handleAuthChange();
-    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
-      handleAuthChange();
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => { handleAuthChange(); });
+    return () => { subscription.unsubscribe(); };
   }, [handleAuthChange]);
 
   const handleSignOut = async () => {
-    try {
-      await signOut();
-      toast.success("Sesión cerrada con éxito.");
-      setUser(null);
-      fetchPosts();
-    } catch (error: any) {
-      console.error("Error al cerrar sesión:", error);
-      toast.error(error.message || "Ocurrió un error al cerrar sesión.");
-    }
+    try { await signOut(); toast.success("Sesión cerrada con éxito."); setUser(null); fetchPosts(); }
+    catch (error: any) { toast.error(error.message || "Ocurrió un error al cerrar sesión."); }
   };
 
   const renderSkeletons = () => (
     Array.from({ length: 3 }).map((_, index) => (
       <div key={index} className="flex flex-col space-y-3 p-6 bg-card rounded-lg shadow-lg">
-        <Skeleton className="h-8 w-3/4" />
-        <Skeleton className="h-4 w-1/2" />
-        <Skeleton className="h-24 w-full" />
+        <Skeleton className="h-8 w-3/4" /><Skeleton className="h-4 w-1/2" /><Skeleton className="h-24 w-full" />
       </div>
     ))
   );
@@ -76,46 +56,26 @@ const ForumPage = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Foro de la Comunidad</h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
-              Un espacio para compartir ideas, hacer preguntas y conectar con nuestra comunidad.
-            </p>
+            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">Un espacio para compartir ideas.</p>
           </div>
-
           <div className="mb-12">
             {user ? (
               <div className="flex flex-col items-center space-y-4">
-                <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
-                  <UserIcon className="h-5 w-5" />
-                  <span>Bienvenido, {user.email}</span>
-                </div>
-                <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2">
-                  <LogOut className="h-4 w-4" />
-                  <span>Cerrar Sesión</span>
-                </Button>
-                <div className="w-full mt-8">
-                  <CreatePostForm userId={user.id} authorEmail={user.email} onPostCreated={fetchPosts} />
-                </div>
+                <div className="flex items-center space-x-2 text-lg font-semibold text-foreground"><UserIcon className="h-5 w-5" /><span>Bienvenido, {user.email}</span></div>
+                <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2"><LogOut className="h-4 w-4" /><span>Cerrar Sesión</span></Button>
+                <div className="w-full mt-8"><CreatePostForm userId={user.id} authorEmail={user.email} onPostCreated={fetchPosts} /></div>
               </div>
             ) : (
               <div className="flex flex-col items-center space-y-4">
-                <p className="text-lg text-foreground text-balance">
-                  Inicia sesión o regístrate para participar en el foro.
-                </p>
+                <p className="text-lg text-foreground text-balance">Inicia sesión o regístrate para participar en el foro.</p>
                 <AuthForm onAuthSuccess={handleAuthChange} />
               </div>
             )}
           </div>
-
           <h2 className="text-3xl font-bold text-primary mb-8 text-center text-balance">Últimas Publicaciones</h2>
           {error && <p className="text-center text-destructive mb-8">{error}</p>}
           <div className="space-y-8">
-            {loading ? renderSkeletons() : posts.length > 0 ? (
-              posts.map(post => (
-                <ForumPostCard key={post.id} post={post} />
-              ))
-            ) : (
-              <p className="text-center text-foreground text-balance">No hay publicaciones en el foro todavía. ¡Sé el primero en publicar!</p>
-            )}
+            {loading ? renderSkeletons() : posts.length > 0 ? posts.map(post => <ForumPostCard key={post.id} post={post} />) : <p className="text-center text-foreground text-balance">No hay publicaciones en el foro todavía.</p>}
           </div>
         </div>
       </main>

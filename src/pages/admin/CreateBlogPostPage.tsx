@@ -22,33 +22,20 @@ const CreateBlogPostPage = () => {
 
   useEffect(() => {
     checkUser();
-    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
-      checkUser();
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => { checkUser(); });
+    return () => { subscription.unsubscribe(); };
   }, [checkUser]);
 
   const handleSignOut = async () => {
-    try {
-      await signOut();
-      toast.success("Sesión cerrada con éxito.");
-      setUser(null);
-    } catch (error: any) {
-      console.error("Error al cerrar sesión:", error);
-      toast.error(error.message || "Ocurrió un error al cerrar sesión.");
-    }
+    try { await signOut(); toast.success("Sesión cerrada con éxito."); setUser(null); }
+    catch (error: any) { toast.error(error.message || "Ocurrió un error al cerrar sesión."); }
   };
 
   if (loading) {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow flex items-center justify-center py-24 bg-muted/30">
-          <p className="text-lg text-foreground text-balance">Cargando...</p>
-        </main>
+        <main className="flex-grow flex items-center justify-center py-24 bg-muted/30"><p className="text-lg text-foreground text-balance">Cargando...</p></main>
         <Footer />
         <AttributionFooter />
       </div>
@@ -57,17 +44,9 @@ const CreateBlogPostPage = () => {
 
   const renderContent = () => (
     <div className="flex flex-col items-center space-y-4">
-      <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
-        <UserIcon className="h-5 w-5" />
-        <span>Bienvenido, {user.email}</span>
-      </div>
-      <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2">
-        <LogOut className="h-4 w-4" />
-        <span>Cerrar Sesión</span>
-      </Button>
-      <div className="w-full mt-8">
-        <BlogPostForm userId={user.id} authorEmail={user.email} />
-      </div>
+      <div className="flex items-center space-x-2 text-lg font-semibold text-foreground"><UserIcon className="h-5 w-5" /><span>Bienvenido, {user.email}</span></div>
+      <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2"><LogOut className="h-4 w-4" /><span>Cerrar Sesión</span></Button>
+      <div className="w-full mt-8"><BlogPostForm userId={user.id} authorEmail={user.email} /></div>
     </div>
   );
 
@@ -78,18 +57,11 @@ const CreateBlogPostPage = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Crear Nueva Publicación de Blog</h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
-              Comparte tus noticias, historias o información relevante con la comunidad.
-            </p>
+            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">Comparte tus noticias.</p>
           </div>
-
-          {user ? (
-            renderContent()
-          ) : (
+          {user ? renderContent() : (
             <div className="flex flex-col items-center space-y-4">
-              <p className="text-lg text-foreground text-balance">
-                Inicia sesión para crear nuevas publicaciones de blog.
-              </p>
+              <p className="text-lg text-foreground text-balance">Inicia sesión para crear nuevas publicaciones de blog.</p>
               <AuthForm onAuthSuccess={checkUser} />
             </div>
           )}

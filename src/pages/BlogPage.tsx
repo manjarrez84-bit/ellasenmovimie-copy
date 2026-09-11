@@ -8,7 +8,7 @@ import { getCurrentUser, onAuthStateChange } from '@/services/forumService';
 import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from '@/components/Link';
 import { PlusCircle } from 'lucide-react';
 
 const BlogPage = () => {
@@ -35,18 +35,13 @@ const BlogPage = () => {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
     };
-
     fetchPosts();
     checkUser();
-
     const { data: { subscription } = { subscription: { unsubscribe: () => {} } } } = onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
       fetchPosts();
     });
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => { subscription.unsubscribe(); };
   }, [fetchPosts]);
 
   const renderSkeletons = () => (
@@ -70,46 +65,29 @@ const BlogPage = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Blog</h1>
-              <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
-                Mantente al día con nuestras últimas noticias, historias de impacto y próximos eventos.
-              </p>
-              
+              <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">Mantente al día con nuestras últimas noticias.</p>
               {user && (
                 <div className="mt-6">
                   <Link to="/admin/blog/new">
-                    <Button className="flex items-center space-x-2">
-                      <PlusCircle className="h-5 w-5" />
-                      <span>Crear Nueva Publicación</span>
-                    </Button>
+                    <Button className="flex items-center space-x-2"><PlusCircle className="h-5 w-5" /><span>Crear Nueva Publicación</span></Button>
                   </Link>
                 </div>
               )}
             </div>
-            
             {error && <p className="text-center text-destructive mb-8">{error}</p>}
-            
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {renderSkeletons()}
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{renderSkeletons()}</div>
             ) : posts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map(post => (
-                  <BlogPostCard key={post.id} post={post} onPostDeleted={fetchPosts} />
-                ))}
+                {posts.map(post => <BlogPostCard key={post.id} post={post} onPostDeleted={fetchPosts} />)}
               </div>
             ) : (
               <div className="text-center p-10 bg-card rounded-lg shadow-lg">
-                <p className="text-xl text-foreground font-semibold">
-                  Aún no hay publicaciones en el blog. ¡Sé el primero en crear una!
-                </p>
+                <p className="text-xl text-foreground font-semibold">Aún no hay publicaciones en el blog. ¡Sé el primero en crear una!</p>
                 {user && (
                   <div className="mt-6">
                     <Link to="/admin/blog/new">
-                      <Button className="flex items-center space-x-2">
-                        <PlusCircle className="h-5 w-5" />
-                        <span>Crear Publicación</span>
-                      </Button>
+                      <Button className="flex items-center space-x-2"><PlusCircle className="h-5 w-5" /><span>Crear Publicación</span></Button>
                     </Link>
                   </div>
                 )}

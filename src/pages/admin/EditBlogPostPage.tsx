@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -30,61 +28,33 @@ const EditBlogPostPage = () => {
   }, []);
 
   const fetchPost = useCallback(async () => {
-    if (!id) {
-      toast.error("ID de publicación no proporcionado.");
-      navigate('/blog');
-      return;
-    }
+    if (!id) { toast.error("ID de publicación no proporcionado."); navigate('/blog'); return; }
     setLoadingPost(true);
     try {
       const fetchedPost = await getPostById(id);
-      if (!fetchedPost) {
-        toast.error("Publicación no encontrada.");
-        navigate('/blog');
-        return;
-      }
+      if (!fetchedPost) { toast.error("Publicación no encontrada."); navigate('/blog'); return; }
       setPost(fetchedPost);
-    } catch (error: any) {
-      console.error("Error al cargar la publicación:", error);
-      toast.error(error.message || "Ocurrió un error al cargar la publicación.");
-      navigate('/blog');
-    } finally {
-      setLoadingPost(false);
-    }
+    } catch (error: any) { toast.error(error.message || "Ocurrió un error al cargar la publicación."); navigate('/blog'); }
+    finally { setLoadingPost(false); }
   }, [id, navigate]);
 
   useEffect(() => {
     checkUser();
     fetchPost();
-
-    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
-      checkUser();
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => { checkUser(); });
+    return () => { subscription.unsubscribe(); };
   }, [checkUser, fetchPost]);
 
   const handleSignOut = async () => {
-    try {
-      await signOut();
-      toast.success("Sesión cerrada con éxito.");
-      setUser(null);
-      navigate('/blog');
-    } catch (error: any) {
-      console.error("Error al cerrar sesión:", error);
-      toast.error(error.message || "Ocurrió un error al cerrar sesión.");
-    }
+    try { await signOut(); toast.success("Sesión cerrada con éxito."); setUser(null); navigate('/blog'); }
+    catch (error: any) { toast.error(error.message || "Ocurrió un error al cerrar sesión."); }
   };
 
   if (loadingUser || loadingPost) {
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow flex items-center justify-center py-24 bg-muted/30">
-          <p className="text-lg text-foreground text-balance">Cargando...</p>
-        </main>
+        <main className="flex-grow flex items-center justify-center py-24 bg-muted/30"><p className="text-lg text-foreground text-balance">Cargando...</p></main>
         <Footer />
         <AttributionFooter />
       </div>
@@ -98,9 +68,7 @@ const EditBlogPostPage = () => {
         <main className="flex-grow py-24 bg-muted/30">
           <div className="container mx-auto px-4 max-w-4xl text-center">
             <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Editar Publicación de Blog</h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">
-              Inicia sesión para editar publicaciones de blog.
-            </p>
+            <p className="text-lg text-foreground max-w-3xl mx-auto text-balance">Inicia sesión para editar publicaciones de blog.</p>
             <AuthForm onAuthSuccess={checkUser} />
           </div>
         </main>
@@ -115,15 +83,7 @@ const EditBlogPostPage = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow flex items-center justify-center py-24 bg-muted/30">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Acceso Denegado</h1>
-            <p className="text-lg text-foreground mb-8 text-balance">
-              No tienes permiso para editar esta publicación o la publicación no existe.
-            </p>
-            <Link to="/blog">
-              <Button>Volver al Blog</Button>
-            </Link>
-          </div>
+          <div className="text-center"><h1 className="text-4xl font-bold text-primary mb-4 text-balance">Acceso Denegado</h1><p className="text-lg text-foreground mb-8 text-balance">No tienes permiso para editar esta publicación.</p><Link to="/blog"><Button>Volver al Blog</Button></Link></div>
         </main>
         <Footer />
         <AttributionFooter />
@@ -136,21 +96,10 @@ const EditBlogPostPage = () => {
       <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="mb-8">
-            <Link to="/blog" className="inline-flex items-center text-primary hover:underline">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver a todas las publicaciones
-            </Link>
-          </div>
+          <div className="mb-8"><Link to="/blog" className="inline-flex items-center text-primary hover:underline"><ArrowLeft className="mr-2 h-4 w-4" />Volver a todas las publicaciones</Link></div>
           <div className="flex flex-col items-center space-y-4 mb-8">
-            <div className="flex items-center space-x-2 text-lg font-semibold text-foreground">
-              <UserIcon className="h-5 w-5" />
-              <span>Bienvenido, {user.email}</span>
-            </div>
-            <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2">
-              <LogOut className="h-4 w-4" />
-              <span>Cerrar Sesión</span>
-            </Button>
+            <div className="flex items-center space-x-2 text-lg font-semibold text-foreground"><UserIcon className="h-5 w-5" /><span>Bienvenido, {user.email}</span></div>
+            <Button variant="outline" onClick={handleSignOut} className="flex items-center space-x-2"><LogOut className="h-4 w-4" /><span>Cerrar Sesión</span></Button>
           </div>
           <BlogPostForm userId={user.id} authorEmail={user.email} initialData={post} onSubmissionSuccess={fetchPost} />
         </div>
