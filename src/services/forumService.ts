@@ -30,6 +30,18 @@ export const createForumPost = async (title: string, content: string, userId: st
   return data as ForumPost;
 };
 
+export const deleteForumPost = async (postId: string): Promise<void> => {
+  const { error } = await supabase
+    .from('forum_posts')
+    .delete()
+    .eq('id', postId);
+
+  if (error) {
+    console.error('Error deleting forum post:', error);
+    throw new Error('No se pudo eliminar la publicación del foro.');
+  }
+};
+
 export const signUp = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signUp({ email, password });
   if (error) throw error;
