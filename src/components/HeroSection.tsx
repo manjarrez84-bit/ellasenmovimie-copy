@@ -1,8 +1,5 @@
-"use client";
-
-import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link } from 'vike-react/Link';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
@@ -17,7 +14,6 @@ const HeroSection = () => {
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-balance">
           Empoderando a Mujeres
         </h1>
-        {/* Se eliminó el texto descriptivo: "Ellas en Movimiento A.C. ofrece apoyo integral, legal y psicológico a mujeres en situación de vulnerabilidad." */}
         <div className="flex space-x-4">
           <Link to="/how-to-help">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-3">

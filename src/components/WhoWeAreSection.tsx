@@ -1,14 +1,12 @@
-import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Goal, Heart, Lightbulb } from 'lucide-react';
 
 const WhoWeAreSection = () => {
   return (
-    <section className="py-16 pt-28 bg-background"> {/* Aumentado pt-28 para evitar que el header lo tape */}
+    <section className="py-16 pt-28 bg-background">
       <div className="container mx-auto px-4 text-center">
         
-        {/* Video quienes4.mp4 insertado aquí - Sin controles */}
         <div className="mx-auto w-full max-w-4xl h-auto mb-8">
           <video 
             src="/quienes4.mp4" 
@@ -23,7 +21,6 @@ const WhoWeAreSection = () => {
           </video>
         </div>
         
-        {/* Contenido de Misión, Visión, Valores */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="rounded-lg overflow-hidden shadow-xl">
             <img src="/IMG-20251015-WA0013.jpg" alt="Mujeres en un taller" className="w-full h-full object-cover" />
@@ -66,70 +63,9 @@ const WhoWeAreSection = () => {
             </Tabs>
           </div>
         </div>
-        {/* Fin del contenido movido */}
-
-        <Card className="max-w-4xl mx-auto p-8 shadow-lg">
-          <CardContent className="text-xl text-foreground text-justify space-y-6">
-            <p className="text-balance">
-              Ellas en Movimiento A.C. es una organización de la sociedad civil sin fines de lucro que trabaja desde hace más de 17 años en el estado de Nuevo León, con el compromiso de mejorar la calidad de vida de mujeres, niñas y sus familias. Nuestra misión es visibilizar la problemática de Ellas y ampliar espacios de participación y desarrollo de las mujeres en la vida pública con el fin de lograr avances en su empoderamiento como personas y como ciudadanas. Nos guía una mirada basada en los derechos humanos, la equidad de género y la sustentabilidad.
-            </p>
-            <p className="text-balance">
-              En Ellas en Movimiento A.C. trabajamos principalmente con mujeres, niñas, niños y adolescentes que habitan en contextos de vulnerabilidad social dentro del estado de Nuevo León, especialmente en zonas urbanas marginadas de Monterrey, como el polígono de pobreza No. 66. Estos grupos enfrentan múltiples carencias que afectan su bienestar, su participación en la vida pública y sus oportunidades de desarrollo.
-            </p>
-            {/* INSERCIÓN DE LA IMAGEN /12.png - Sombra eliminada, contraste añadido */}
-            <img 
-              src="/12.png" 
-              alt="Imagen de apoyo" 
-              className="mx-auto w-full h-auto my-8 rounded-lg brightness-110 contrast-125" 
-            />
-            {/* FIN DE LA INSERCIÓN */}
-            <p className="text-balance">
-              Nuestra visión es ser una fuerza transformadora y generadora de respuestas para un avance 
-              significativo en el desarrollo integral de Ellas habiendo logrado su empoderamiento. 
-            </p>
-            <p className="text-balance">
-              Trabajamos en alianza con organizaciones, instituciones académicas, sector público y empresas socialmente responsables, para sumar esfuerzos locales a una agenda global, alineando nuestros programas a los Objetivos de Desarrollo Sostenible 2030.
-            </p>
-            <p className="text-balance">
-              Nuestra intervención se enfoca en Ellas porque históricamente han sido excluidas de los espacios donde se toman decisiones y viven situaciones que comprometen su salud, seguridad y acceso a derechos fundamentales.
-            </p>
-            <p className="text-balance">
-              En este contexto, brindar atención integral a estos grupos prioritarios no es solo urgente, sino también esencial para generar condiciones de equidad y justicia social. Al trabajar desde un enfoque comunitario, con programas de empoderamiento, cultura ecológica y educación ambiental, primera infancia y fortalecimiento emocional, oportunidades productivas para Ellas buscamos romper con las barreras estructurales que impiden el ejercicio pleno de sus derechos y su capacidad para transformar sus realidades.
-            </p>
-            <p className="text-balance">
-              Nuestra labor no sustituye al Estado, pero sí complementa esfuerzos públicos con cercanía y pertinencia cultural. Si no se realizan acciones específicas para atender a estas poblaciones, las consecuencias se traducen en una mayor profundización de la desigualdad, reproducción de ciclos intergeneracionales de pobreza, aumento en los niveles de violencia, debilitamiento del tejido social y pérdida de oportunidades para que estas personas construyan un futuro digno y todos compartamos una Casa Común. La falta de atención también conlleva el riesgo de perpetuar la invisibilidad de las mujeres y la normalización de contextos que limitan el desarrollo de la infancia. Por ello, en Ellas en Movimiento A.C. trabajamos con convicción para que las mujeres y sus familias no solo accedan a servicios, sino que también participen activamente en procesos de transformación social y comunitaria. A través de nuestras acciones sostenidas en el tiempo y ancladas en el territorio, buscamos que cada mujer, niña y niño tenga los recursos, el acompañamiento y la confianza necesarios para detonar sus capacidades y avanzar hacia una vida más justa, libre y plena.
-            </p>
-          </CardContent>
-        </Card>
-        
-        {/* Imagen obje.png insertada aquí */}
-        <img src="/obje.png" alt="Objetivos" className="mt-12 mx-auto h-auto rounded-lg" />
-
         <div className="max-w-4xl mx-auto mt-8 p-6 bg-muted/50 rounded-lg">
           <p className="text-lg text-foreground text-justify text-balance">
-            Los objetivos institucionales de Ellas en Movimiento suelen centrarse en la promoción de la igualdad de género y los derechos humanos de las mujeres, niñas y adolescentes, esto incluye la erradicación de la violencia de género, el empoderamiento económico y social, la promoción de la participación ciudadana y política, y el desarrollo de capacidades a través de procesos de aprendizaje de capacitación y sensibilización en temas trascendentes para Ellas.
-          </p>
-        </div>
-
-        {/* Video ejes2.mp4 insertado aquí */}
-        <div className="mx-auto w-full max-w-4xl h-auto mt-12">
-          <video 
-            src="/ejes2.mp4" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-auto object-cover"
-            aria-label="Video de ejes de acción"
-          >
-            Tu navegador no soporta la etiqueta de video.
-          </video>
-        </div>
-
-        {/* Nuevo texto añadido aquí - Cambiando text-justify a text-left */}
-        <div className="max-w-4xl mx-auto mt-8 p-6 bg-muted/50 rounded-lg text-left">
-          <p className="text-lg text-foreground mb-4 text-balance">
-            Los sujetos de derecho de nuestra Ellas en Movimiento son en femenino, nuestros servicios y programas van encaminados a la atención integral de mujeres niñas, niños y adolescentes. Grupos poblacionales ancestralmente excluidos de la toma de decisiones del desarrollo de México. 
+            Los objetivos institucionales de Ellas en Movimiento suelen centrarse en la promoción de la igualdad de género y los derechos humanos de las mujeres, niñas y adolescentes, esto incluye la erradicación de la violencia de género, el empoderamiento económico y social, la promoción de la participación ciudadana y política, y el desarrollo de capacidades a través de procesos de aprendizaje de capacitación y sensibilización en temas trascendentes para Ellas. 
           </p>
           <p className="text-lg font-semibold text-primary mb-3 text-balance">
             Y las diversas actividades de sostenibilidad de Ellas en Movimiento van encaminadas a: 

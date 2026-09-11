@@ -1,10 +1,9 @@
-import React from 'react';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const ContactSection = () => {
   return (
-    <section className="pt-28 pb-16 bg-muted/30"> {/* Cambiado de py-16 a pt-28 pb-16 para compensar el header fijo y reducir el margen superior visible */}
+    <section className="pt-28 pb-16 bg-muted/30">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-primary mb-12 text-balance">Contáctanos</h2>
         <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-balance">
@@ -28,7 +27,7 @@ const ContactSection = () => {
               <CardTitle className="text-xl font-semibold mb-2 text-balance">Teléfono</CardTitle>
             </CardHeader>
             <CardContent className="text-foreground text-balance">
-              <p className="font-bold mb-2">+52 8183741257</p> {/* Número actualizado y destacado */}
+              <p className="font-bold mb-2">+52 8183741257</p>
               <p className="font-bold mb-2">+52 8112664221</p>
               <p className="font-bold">+52 8137142927</p>
             </CardContent>
