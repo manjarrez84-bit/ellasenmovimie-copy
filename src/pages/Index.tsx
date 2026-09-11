@@ -1,4 +1,3 @@
-import React from 'react';
 import { AttributionFooter } from "@/components/AttributionFooter";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -6,7 +5,7 @@ import CallToActionSection from '@/components/CallToActionSection';
 import ContactSection from '@/components/ContactSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import LatestBlogPostsSection from '@/components/LatestBlogPostsSection';
-import Link from '@/components/Link';
+import { Link } from 'vike-react/Link';
 
 const Index = () => {
   return (

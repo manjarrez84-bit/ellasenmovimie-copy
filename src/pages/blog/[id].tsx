@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { usePageContext } from 'vike/react';
-import Link from '@/components/Link';
+import { usePageContext } from 'vike';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';

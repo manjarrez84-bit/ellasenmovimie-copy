@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -9,7 +9,6 @@ import CreatePostForm from '@/components/forms/CreatePostForm';
 import AuthForm from '@/components/AuthForm';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import Link from '@/components/Link';
 import { User as UserIcon, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -39,7 +38,7 @@ const ForumPage = () => {
 
   useEffect(() => {
     handleAuthChange();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       handleAuthChange();
     });
 

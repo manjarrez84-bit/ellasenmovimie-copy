@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -24,7 +24,6 @@ const DonationForm = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [finalAmount, setFinalAmount] = useState(0);
-
   const form = useForm<DonationFormValues>({
     resolver: zodResolver(donationFormSchema),
     defaultValues: { name: "", email: "" },

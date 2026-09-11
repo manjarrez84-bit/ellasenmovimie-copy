@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { usePageContext } from 'vike/react';
-import Link from '@/components/Link';
+import { usePageContext } from 'vike';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -25,7 +24,7 @@ const CreateBlogPostPage = () => {
 
   useEffect(() => {
     checkUser();
-    const { data: { subscription } } = onAuthStateChange((event, session) => {
+    const { data: { subscription } } = onAuthStateChange((_event, _session) => {
       checkUser();
     });
 

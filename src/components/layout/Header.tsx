@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Link from '@/components/Link';
+import { Link } from 'vike-react/Link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
@@ -19,7 +19,7 @@ const navItems = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { user, isAdmin, loading } = useAuth();
+  const { user, isAdmin } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
