@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'vike-react/Link';
-import { AttributionFooter } from '@/components/AttributionFooter";
+import { AttributionFooter } from "@/components/AttributionFooter";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
