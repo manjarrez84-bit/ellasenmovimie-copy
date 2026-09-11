@@ -18,7 +18,6 @@ const LatestBlogPostsSection = () => {
       try {
         setLoading(true);
         const fetchedPosts = await getAllPosts();
-        // Tomar solo las 3 publicaciones más recientes
         setPosts(fetchedPosts.slice(0, 3)); 
       } catch (err) {
         console.error("Error fetching latest blog posts:", err);
