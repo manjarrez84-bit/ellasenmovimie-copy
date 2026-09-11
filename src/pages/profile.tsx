@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect, useCallback } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -10,11 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { User as UserIcon, Mail, Tag, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProfilePage = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState<any | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -35,10 +31,9 @@ const ProfilePage = () => {
       }
     } else {
       setUserRole(null);
-      navigate('/forum');
     }
     setLoading(false);
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     fetchUserProfile();
@@ -57,7 +52,6 @@ const ProfilePage = () => {
       toast.success("Sesión cerrada con éxito.");
       setUser(null);
       setUserRole(null);
-      navigate('/forum');
     } catch (error: any) {
       console.error("Error al cerrar sesión:", error);
       toast.error(error.message || "Ocurrió un error al cerrar sesión.");

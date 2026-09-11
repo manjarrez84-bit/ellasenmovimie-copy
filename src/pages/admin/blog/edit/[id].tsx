@@ -1,6 +1,6 @@
-"use client";
-
 import { useState, useEffect, useCallback } from 'react';
+import usePageContext from 'vike-react';
+import Link from '@/components/Link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -11,12 +11,11 @@ import { getPostById } from '@/services/blogService';
 import { User as UserIcon, LogOut, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { useParams, useNavigate, Link } from 'react-router-dom';
 import { BlogPost } from '@/types';
 
 const EditBlogPostPage = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const { routeParams, navigate } = usePageContext();
+  const id = routeParams.id as string;
   const [user, setUser] = useState<any | null>(null);
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
