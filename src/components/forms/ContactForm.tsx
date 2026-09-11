@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -11,7 +8,6 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
 
-// Esquema de validación con Zod
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }).max(50, { message: "El nombre no debe exceder los 50 caracteres." }),
   email: z.string().email({ message: "Por favor, introduce un correo electrónico válido." }),
@@ -50,7 +46,7 @@ const ContactForm = () => {
       }
 
       toast.success("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.");
-      form.reset(); // Limpiar el formulario después del envío
+      form.reset();
     } catch (error) {
       console.error("Error al enviar el mensaje:", error);
       toast.error("Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo.");

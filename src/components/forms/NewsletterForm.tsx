@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -27,11 +24,11 @@ const NewsletterForm = () => {
   const onSubmit = async (values: NewsletterFormValues) => {
     try {
       const { error } = await supabase
-        .from('SUBSCRIPTIONS') // Corregido: de 'subscriptions' a 'SUBSCRIPTIONS'
+        .from('SUBSCRIPTIONS')
         .insert([{ email: values.email }]);
 
       if (error) {
-        if (error.code === '23505') { // Error de violación de unicidad
+        if (error.code === '23505') {
           toast.error("Este correo electrónico ya está suscrito.");
         } else {
           throw error;

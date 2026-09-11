@@ -19,7 +19,7 @@ const navItems = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { user, isAdmin, loading } = useAuth();
+  const { user, isAdmin } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
