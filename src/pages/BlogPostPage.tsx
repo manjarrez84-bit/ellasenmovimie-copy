@@ -7,11 +7,10 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { getPostById, deleteBlogPost } from '@/services/blogService';
-import { getCurrentUser } from '@/services/forumService';
 import { BlogPost } from '@/types';
-import { Skeleton } from '@/components/ui/skeleton';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -44,6 +43,7 @@ const BlogPostPage = () => {
         setLoading(true);
         const fetchedPost = await getPostById(id);
         setPost(fetchedPost);
+        const { getCurrentUser } = await import('@/services/forumService');
         const user = await getCurrentUser();
         setCurrentUser(user);
       } catch (err) { console.error(err); } finally { setLoading(false); }
