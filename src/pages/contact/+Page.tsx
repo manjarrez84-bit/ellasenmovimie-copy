@@ -6,8 +6,11 @@ import ContactSection from '@/components/ContactSection';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import ContactForm from '@/components/forms/ContactForm';
 import SEOHead from '@/components/SEOHead';
+import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
+  const { urlPathname } = usePageContext();
+
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -31,7 +34,9 @@ const Page = () => {
         </section>
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 text-center max-w-4xl">
-            <video src="/movi.mp4" autoPlay loop muted playsInline className="w-full h-auto rounded-lg shadow-xl" aria-label="Video de Ellas en Movimiento">Tu navegador no soporta la etiqueta de video.</video>
+            <video src="/movi.mp4" autoPlay loop muted playsInline className="w-full h-auto rounded-lg shadow-xl" aria-label="Video de Ellas en Movimiento">
+              Tu navegador no soporta la etiqueta de video.
+            </video>
           </div>
         </section>
       </main>
@@ -40,8 +45,5 @@ const Page = () => {
     </div>
   );
 };
-
-const route = { route: '/contact', title: 'Contacto' };
-export { route };
 
 export default Page;

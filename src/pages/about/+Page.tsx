@@ -6,8 +6,11 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import ImpactStatsSection from '@/components/ImpactStatsSection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
 import SEOHead from '@/components/SEOHead';
+import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
+  const { urlPathname } = usePageContext();
+
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -25,8 +28,5 @@ const Page = () => {
     </div>
   );
 };
-
-const route = { route: '/about', title: 'Nosotras' };
-export { route };
 
 export default Page;

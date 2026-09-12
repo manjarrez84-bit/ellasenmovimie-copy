@@ -8,8 +8,10 @@ import { HandHeart, DollarSign, Users, Facebook, Twitter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import SEOHead from '@/components/SEOHead';
+import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
+  const { urlPathname } = usePageContext();
   const shareUrl = window.location.origin;
   const shareText = "Apoya a Ellas en Movimiento, A.C. #EllasEnMovimiento";
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -54,8 +56,5 @@ const Page = () => {
     </div>
   );
 };
-
-const route = { route: '/how-to-help', title: 'Cómo Ayudar' };
-export { route };
 
 export default Page;

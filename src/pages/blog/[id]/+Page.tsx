@@ -46,7 +46,7 @@ const Page = () => {
         const { getCurrentUser } = await import('@/services/forumService');
         const user = await getCurrentUser();
         setCurrentUser(user);
-      } catch (err) { console.error(err); } finally { setLoading(false); }
+      } catch (err) { console.error(err); } finally { setLoading(false); };
     };
     fetchData();
   }, [id]);
@@ -134,8 +134,5 @@ const Page = () => {
     </div>
   );
 };
-
-const route = { route: '/blog/:id', title: 'Publicación del Blog' };
-export { route };
 
 export default Page;

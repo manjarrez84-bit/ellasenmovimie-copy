@@ -7,8 +7,11 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import DonationForm from '@/components/forms/DonationForm';
 import DonationImpact from '@/components/DonationImpact';
 import SEOHead from '@/components/SEOHead';
+import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
+  const { urlPathname } = usePageContext();
+
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -34,8 +37,5 @@ const Page = () => {
     </div>
   );
 };
-
-const route = { route: '/donate', title: 'Donar' };
-export { route };
 
 export default Page;
