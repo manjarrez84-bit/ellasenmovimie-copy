@@ -8,7 +8,7 @@ import DonationForm from '@/components/forms/DonationForm';
 import DonationImpact from '@/components/DonationImpact';
 import SEOHead from '@/components/SEOHead';
 
-const DonatePage = () => {
+const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -35,7 +35,7 @@ const DonatePage = () => {
   );
 };
 
-export default DonatePage;
+export default Page;
 
 export { route };
 const route = { route: '/donate', title: 'Donar' };

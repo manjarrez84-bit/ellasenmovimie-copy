@@ -7,7 +7,7 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import DetailedProgramsList from '@/components/DetailedProgramsList';
 import SEOHead from '@/components/SEOHead';
 
-const ProgramsPage = () => {
+const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -26,7 +26,7 @@ const ProgramsPage = () => {
   );
 };
 
-export default ProgramsPage;
+export default Page;
 
 export { route };
 const route = { route: '/programs', title: 'Programas' };
