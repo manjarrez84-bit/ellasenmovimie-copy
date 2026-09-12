@@ -7,7 +7,7 @@ import ImpactStatsSection from '@/components/ImpactStatsSection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
 import SEOHead from '@/components/SEOHead';
 
-const AboutPage = () => {
+const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -26,7 +26,7 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default Page;
 
 export { route };
 const route = { route: '/about', title: 'Nosotras' };

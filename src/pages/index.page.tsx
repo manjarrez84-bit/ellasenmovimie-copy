@@ -11,7 +11,7 @@ import Link from '@/components/Link';
 import SEOHead from '@/components/SEOHead';
 import JsonLd from '@/components/JsonLd';
 
-const Index = () => {
+const Page = () => {
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "NGO",
@@ -104,7 +104,7 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Page;
 
 const route = { route: '/', title: 'Inicio' };
 export { route };
