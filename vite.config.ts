@@ -4,7 +4,7 @@ import vike from 'vike/plugin';
 import path from 'path';
 
 export default defineConfig(() => ({
-  base: './',
+  base: '/',
   server: {
     host: '::',
     port: 8080,
