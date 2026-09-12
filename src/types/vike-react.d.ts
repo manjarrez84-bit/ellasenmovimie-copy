@@ -29,9 +29,3 @@ declare module 'vike-react/usePageContext' {
   function usePageContext(): PageContext;
   export { usePageContext };
 }
-
-declare module 'vike-react/plugin' {
-  import { Plugin } from 'vite';
-  function vikeReact(): Plugin;
-  export default vikeReact;
-}

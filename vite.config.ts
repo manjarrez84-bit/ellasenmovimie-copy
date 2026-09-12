@@ -1,17 +1,18 @@
-import { defineConfig } from "vite";
-import vikeReact from "vike-react/plugin";
-import path from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import vike from 'vike/plugin';
+import path from 'path';
 
 export default defineConfig(() => ({
-  base: "./",
+  base: './',
   server: {
-    host: "::",
+    host: '::',
     port: 8080,
   },
-  plugins: [vikeReact()],
+  plugins: [react(), vike()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 }));
