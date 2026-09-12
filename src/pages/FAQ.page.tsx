@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { AttributionFooter } from '@/components/AttributionFooter';
 import SEOHead from '@/components/SEOHead';
 
-const FAQPage = () => {
+const Page = () => {
   const faqs = [
     { question: "¿Qué tipo de ayuda ofrecen?", answer: "Ofrecemos un apoyo integral que incluye asesoría legal gratuita, apoyo psicológico, talleres de capacitación laboral, y programas educativos sobre derechos y prevención de la violencia." },
     { question: "¿Sus servicios tienen algún costo?", answer: "No, todos nuestros servicios son completamente gratuitos para las mujeres que los necesitan." },
@@ -48,7 +48,7 @@ const FAQPage = () => {
   );
 };
 
-export default FAQPage;
+export default Page;
 
 export { route };
 const route = { route: '/faq', title: 'Preguntas Frecuentes' };

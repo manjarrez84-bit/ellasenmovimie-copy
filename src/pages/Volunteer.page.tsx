@@ -7,7 +7,7 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import VolunteerForm from '@/components/forms/VolunteerForm';
 import SEOHead from '@/components/SEOHead';
 
-const VolunteerPage = () => {
+const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -33,7 +33,7 @@ const VolunteerPage = () => {
   );
 };
 
-export default VolunteerPage;
+export default Page;
 
 export { route };
 const route = { route: '/volunteer', title: 'Voluntariado' };

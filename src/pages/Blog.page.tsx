@@ -14,7 +14,7 @@ import Link from '@/components/Link';
 import { PlusCircle } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 
-const BlogPage = () => {
+const Page = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -110,7 +110,7 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default Page;
 
 export { route };
 const route = { route: '/blog', title: 'Blog' };
