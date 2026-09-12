@@ -106,5 +106,5 @@ const Index = () => {
 
 export default Index;
 
-export { route };
 const route = { route: '/', title: 'Inicio' };
+export { route };

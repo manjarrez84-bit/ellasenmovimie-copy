@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Link as VikeLink } from 'vike-react/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface LinkProps {
   to: string;
@@ -12,9 +12,9 @@ interface LinkProps {
 
 const Link = ({ to, children, className, onClick }: LinkProps) => {
   return (
-    <VikeLink to={to} className={className} onClick={onClick}>
+    <RouterLink to={to} className={className} onClick={onClick}>
       {children}
-    </VikeLink>
+    </RouterLink>
   );
 };
 

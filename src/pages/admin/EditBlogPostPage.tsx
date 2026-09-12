@@ -12,7 +12,7 @@ import { User as UserIcon, LogOut, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { usePageContext } from 'vike-react/usePageContext';
-import { Link } from 'vike-react/Link';
+import Link from '@/components/Link';
 import { BlogPost } from '@/types';
 import SEOHead from '@/components/SEOHead';
 
