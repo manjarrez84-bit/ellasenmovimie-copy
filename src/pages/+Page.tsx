@@ -2,6 +2,7 @@
 
 import { usePageContext } from "vike-react/usePageContext";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { AttributionFooter } from "@/components/AttributionFooter";
@@ -9,9 +10,31 @@ import CallToActionSection from "@/components/CallToActionSection";
 import LatestBlogPostsSection from "@/components/LatestBlogPostsSection";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "@/components/Link";
+import ContactSection from "@/components/ContactSection";
 
 const Page = () => {
   const { urlPathname } = usePageContext();
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Ellas en Movimiento, A.C.",
+    "url": "https://ellasenmovimiento.org",
+    "description": "Organización sin fines de lucro que empodera a mujeres en situación de violencia y pobreza a través de asesoría legal, apoyo psicológico, talleres productivos y programas educativos.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Porfirio Díaz 426 Nte. Col. Centro",
+      "addressLocality": "Monterrey",
+      "addressRegion": "Nuevo León",
+      "postalCode": "64000",
+      "addressCountry": "MX"
+    },
+    "telephone": "+52-81-8374-1257",
+    "email": "contacto@ellasenmovimiento.org",
+    "areaServed": "Monterrey, Nuevo León, México",
+    "foundingDate": "2008",
+    "mission": "Empoderar a mujeres en situación de vulnerabilidad a través de educación, asesoría legal y apoyo psicológico."
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -20,6 +43,7 @@ const Page = () => {
         description="Ellas en Movimiento, A.C. - Apoyando a mujeres en situación de violencia y pobreza. Descubre nuestros programas de empoderamiento, asesoría legal y talleres productivos."
         path="/"
       />
+      <JsonLd data={organizationJsonLd} />
       <Header />
       <main className="flex-grow pt-24">
         <section className="py-12 bg-muted/30">
