@@ -13,10 +13,8 @@ import { Button } from '@/components/ui/button';
 import Link from '@/components/Link';
 import { PlusCircle } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
-import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
-  const { urlPathname } = usePageContext();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

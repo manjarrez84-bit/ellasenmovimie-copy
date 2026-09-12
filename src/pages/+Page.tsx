@@ -1,6 +1,5 @@
 "use client";
 
-import { usePageContext } from "vike-react/usePageContext";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import Header from "@/components/layout/Header";
@@ -13,8 +12,6 @@ import Link from "@/components/Link";
 import ContactSection from "@/components/ContactSection";
 
 const Page = () => {
-  const { urlPathname } = usePageContext();
-
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "NGO",

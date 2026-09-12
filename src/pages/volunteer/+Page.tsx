@@ -6,11 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import VolunteerForm from '@/components/forms/VolunteerForm';
 import SEOHead from '@/components/SEOHead';
-import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
-  const { urlPathname } = usePageContext();
-
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead

@@ -5,10 +5,8 @@ import Footer from '@/components/layout/Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AttributionFooter } from '@/components/AttributionFooter';
 import SEOHead from '@/components/SEOHead';
-import { usePageContext } from 'vike-react/usePageContext';
 
 const Page = () => {
-  const { urlPathname } = usePageContext();
   const faqs = [
     { question: "¿Qué tipo de ayuda ofrecen?", answer: "Ofrecemos un apoyo integral que incluye asesoría legal gratuita, apoyo psicológico, talleres de capacitación laboral, y programas educativos sobre derechos y prevención de la violencia." },
     { question: "¿Sus servicios tienen algún costo?", answer: "No, todos nuestros servicios son completamente gratuitos para las mujeres que los necesitan." },
