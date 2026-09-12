@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import SEOHead from '@/components/SEOHead';
 
-const Page = () => {
+const BlogPostPage = () => {
   const pageContext = usePageContext();
   const id = pageContext.routeParams.id;
   const navigate = pageContext.router.navigate;
@@ -135,7 +135,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default BlogPostPage;
 
 export { route };
 const route = { route: '/blog/:id', title: 'Publicación del Blog' };

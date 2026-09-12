@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import SEOHead from '@/components/SEOHead';
 
-const Page = () => {
+const HowToHelpPage = () => {
   const shareUrl = window.location.origin;
   const shareText = "Apoya a Ellas en Movimiento, A.C. #EllasEnMovimiento";
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -55,7 +55,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default HowToHelpPage;
 
 export { route };
 const route = { route: '/how-to-help', title: 'Cómo Ayudar' };

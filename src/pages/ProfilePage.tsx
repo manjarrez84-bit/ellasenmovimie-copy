@@ -14,7 +14,7 @@ import { usePageContext } from 'vike-react/usePageContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import SEOHead from '@/components/SEOHead';
 
-const Page = () => {
+const ProfilePage = () => {
   const pageContext = usePageContext() as any;
   const navigate = pageContext.router.navigate;
   const [user, setUser] = useState<any | null>(null);
@@ -86,7 +86,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ProfilePage;
 
 export { route };
 const route = { route: '/profile', title: 'Mi Perfil' };

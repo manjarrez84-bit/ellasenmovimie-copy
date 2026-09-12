@@ -7,7 +7,7 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import ContactForm from '@/components/forms/ContactForm';
 import SEOHead from '@/components/SEOHead';
 
-const Page = () => {
+const ContactPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEOHead
@@ -41,7 +41,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ContactPage;
 
 export { route };
 const route = { route: '/contact', title: 'Contacto' };

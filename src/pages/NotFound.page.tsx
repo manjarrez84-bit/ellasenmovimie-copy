@@ -5,7 +5,7 @@ import Link from '@/components/Link';
 import { AttributionFooter } from "@/components/AttributionFooter";
 import { usePageContext } from 'vike-react/usePageContext';
 
-const Page = () => {
+const NotFound = () => {
   const pageContext = usePageContext();
   useEffect(() => { console.error("404 Error:", pageContext.urlPathname); }, [pageContext.urlPathname]);
   return (
@@ -22,7 +22,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default NotFound;
 
 export { route };
 const route = { route: '*', title: '404 - Page Not Found' };

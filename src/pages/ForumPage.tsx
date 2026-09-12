@@ -15,7 +15,7 @@ import { User as UserIcon, LogOut } from 'lucide-react';
 import { toast } from 'sonner';
 import SEOHead from '@/components/SEOHead';
 
-const Page = () => {
+const ForumPage = () => {
   const [posts, setPosts] = useState<ForumPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -93,7 +93,7 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ForumPage;
 
 export { route };
 const route = { route: '/forum', title: 'Foro' };
