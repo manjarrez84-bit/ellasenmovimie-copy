@@ -135,7 +135,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/blog/:id', title: 'Publicación del Blog' };
+export { route };
+
+export default Page;

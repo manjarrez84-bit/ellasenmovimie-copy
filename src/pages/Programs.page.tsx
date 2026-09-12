@@ -26,7 +26,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/programs', title: 'Programas' };
+export { route };
+
+export default Page;

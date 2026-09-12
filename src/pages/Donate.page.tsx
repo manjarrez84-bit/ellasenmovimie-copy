@@ -35,7 +35,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/donate', title: 'Donar' };
+export { route };
+
+export default Page;

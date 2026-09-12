@@ -22,7 +22,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '*', title: '404 - Page Not Found' };
+export { route };
+
+export default Page;

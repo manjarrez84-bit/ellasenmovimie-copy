@@ -55,7 +55,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/how-to-help', title: 'Cómo Ayudar' };
+export { route };
+
+export default Page;

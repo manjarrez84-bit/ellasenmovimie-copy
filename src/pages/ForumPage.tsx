@@ -93,7 +93,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/forum', title: 'Foro' };
+export { route };
+
+export default Page;

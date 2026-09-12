@@ -33,7 +33,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/volunteer', title: 'Voluntariado' };
+export { route };
+
+export default Page;

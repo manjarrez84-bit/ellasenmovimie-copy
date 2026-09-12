@@ -104,7 +104,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
 const route = { route: '/', title: 'Inicio' };
 export { route };
+
+export default Page;

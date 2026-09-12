@@ -86,7 +86,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/profile', title: 'Mi Perfil' };
+export { route };
+
+export default Page;

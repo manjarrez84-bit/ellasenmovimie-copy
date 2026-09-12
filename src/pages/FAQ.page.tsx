@@ -48,7 +48,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/faq', title: 'Preguntas Frecuentes' };
+export { route };
+
+export default Page;

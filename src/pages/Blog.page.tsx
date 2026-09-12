@@ -110,7 +110,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/blog', title: 'Blog' };
+export { route };
+
+export default Page;

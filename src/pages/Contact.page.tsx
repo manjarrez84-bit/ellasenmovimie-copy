@@ -41,7 +41,7 @@ const Page = () => {
   );
 };
 
-export default Page;
-
-export { route };
 const route = { route: '/contact', title: 'Contacto' };
+export { route };
+
+export default Page;
