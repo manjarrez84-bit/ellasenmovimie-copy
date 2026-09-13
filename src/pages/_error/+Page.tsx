@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { AttributionFooter } from "@/components/AttributionFooter";
 import SEOHead from "@/components/SEOHead";
 import Link from "@/components/Link";
+import { Button } from "@/components/ui/button";
 
 const Page = () => {
   const pageContext = usePageContext();
