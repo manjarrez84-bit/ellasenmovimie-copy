@@ -10,7 +10,6 @@ import Link from "@/components/Link";
 import ContactSection from "@/components/ContactSection";
 import { Button } from "@/components/ui/button";
 import { Shield } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
 
 const Page = () => {
   return (
@@ -72,6 +71,29 @@ const Page = () => {
         <AnimatedSection>
           <ContactSection />
         </AnimatedSection>
+
+        {/* Sección de acceso para Administradores */}
+        <section className="py-8 bg-muted/40 border-t border-border">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-md mx-auto p-6 bg-card rounded-xl border shadow-sm flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
+                <Shield className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-1">
+                Acceso Administrativo
+              </h3>
+              <p className="text-xs text-muted-foreground mb-4">
+                Panel exclusivo para gestión de contenido, publicaciones y usuarios
+              </p>
+              <Link to="/admin/dashboard" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto border-primary/30 hover:bg-primary hover:text-primary-foreground transition-colors gap-2">
+                  <Shield className="w-4 h-4" />
+                  Ir al Dashboard de Administración
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
       <AttributionFooter />
