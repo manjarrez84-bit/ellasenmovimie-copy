@@ -16,13 +16,8 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SEOHead
-        title="Preguntas Frecuentes"
-        description="Respuestas a las preguntas más frecuentes sobre Ellas en Movimiento, A.C. Servicios gratuitos, donaciones, voluntariado y más."
-        path="/faq"
-      />
-      <Header />
+      <div className="flex flex-col min-h-screen">
+        <Header />
       <main className="flex-grow">
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4 text-center">

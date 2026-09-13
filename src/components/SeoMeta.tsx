@@ -1,5 +1,3 @@
-import React from 'react';
-
 type SeoMetaProps = {
   title: string;
   description: string;
@@ -15,7 +13,7 @@ const DEFAULT_IMAGE = `${BASE_URL}/logo.png`;
 export default function SeoMeta({ title, description, path, image, type = 'website' }: SeoMetaProps) {
   const fullTitle = `${title} | ${SITE_NAME}`;
   const url = `${BASE_URL}${path}`;
-  // Siempre absoluta: si 'image' viene relativa (ej. "/blog/foto.jpg"), la convierte
+  // Siempre absoluta: si 'image' viene relativa (ej. \"/blog/foto.jpg\"), la convierte
   const ogImage = image
     ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
     : DEFAULT_IMAGE;

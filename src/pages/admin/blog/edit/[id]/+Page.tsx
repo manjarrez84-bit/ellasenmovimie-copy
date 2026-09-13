@@ -11,31 +11,28 @@ import { getCurrentUser } from '@/services/forumService';
 import { getUserProfile } from '@/services/profileService';
 import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
-import SEOHead from '@/components/SEOHead';
-import { useRouter } from 'vike-react/useRouter';
 
 const Page = () => {
   const pageContext = usePageContext();
-  const router = useRouter();
-  const id = pageContext.routeParams.id;
+    const id = pageContext.routeParams.id;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const user = await getCurrentUser();
-      if (!user) {
-        router.push('/');
-        return;
-      }
-      const profile = await getUserProfile(user.id);
-      if (!profile || profile.role !== 'admin') {
-        router.push('/');
-        return;
-      }
-    };
-    checkAuth();
-  }, [router]);
+      const checkAuth = async () => {
+        const user = await getCurrentUser();
+        if (!user) {
+          pageContext.router.navigate('/');
+          return;
+        }
+        const profile = await getUserProfile(user.id);
+        if (!profile || profile.role !== 'admin') {
+          pageContext.router.navigate('/');
+          return;
+        }
+      };
+      checkAuth();
+    }, []);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -85,9 +82,8 @@ const Page = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SEOHead title={`Editar: ${post.title}`} description={`Edita la publicación "${post.title}"`} path={`/admin/blog/edit/${post.id}`} />
-      <Header />
+      <div className="flex flex-col min-h-screen">
+        <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-4xl font-bold text-primary mb-8 text-balance">Editar Publicación</h1>

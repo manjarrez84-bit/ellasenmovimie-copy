@@ -28,7 +28,7 @@ import {
 
 const Page = () => {
   const pageContext = usePageContext();
-  const post = pageContext.pageProps.post as BlogPost;
+  const { post } = pageContext.pageProps as { post: BlogPost };
   const navigate = pageContext.router.navigate;
   const [currentUser, setCurrentUser] = useState<any | null>(null);
 

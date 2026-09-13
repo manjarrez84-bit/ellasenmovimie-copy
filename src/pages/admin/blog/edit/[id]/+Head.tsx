@@ -7,11 +7,9 @@ export default function Head() {
   const { post } = pageContext.pageProps as { post: BlogPost }; // @ts-ignore
   return (
     <SeoMeta
-      title={post.title}
-      description={post.summary}
-      path={`/blog/${post.id}`}
-      image={post.image_url}
-      type="article"
+      title={`Editar: ${post.title}`}
+      description={`Edita la publicación "${post.title}"`}
+      path={`/admin/blog/edit/${post.id}`}
     />
   );
 }
