@@ -1,10 +1,9 @@
 import SeoMeta from '@/components/SeoMeta';
-import { usePageContext } from 'vike-react/usePageContext';
+import { useData } from 'vike-react/useData';
 import type { BlogPost } from '@/types';
 
 export default function Head() {
-  const pageContext = usePageContext();
-  const { post } = pageContext.pageProps as { post: BlogPost }; // @ts-ignore
+  const { post } = useData<{ post: BlogPost }>();
   return (
     <SeoMeta
       title={post.title}
