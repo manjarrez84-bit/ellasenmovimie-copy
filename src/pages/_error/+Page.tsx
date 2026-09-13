@@ -1,24 +1,38 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePageContext } from "vike-react/usePageContext";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { AttributionFooter } from "@/components/AttributionFooter";
-import { usePageContext } from 'vike-react/usePageContext';
+import SEOHead from "@/components/SEOHead";
+import Link from "@/components/Link";
 
 const Page = () => {
   const pageContext = usePageContext();
+
   useEffect(() => {
-    console.error("Error:", pageContext.urlPathname);
-  }, [pageContext.urlPathname]);
+    document.title = "404 - Página No Encontrada | Ellas en Movimiento";
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-grow flex items-center justify-center bg-gray-100">
+    <div className="flex flex-col min-h-screen">
+      <SEOHead
+        title="404 - Página No Encontrada"
+        description="La página que buscas no existe."
+        path={pageContext.urlPathname}
+      />
+      <Header />
+      <main className="flex-grow flex items-center justify-center bg-gray-100">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">404</h1>
-          <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-          <a href="/">Return to Home</a>
+          <h1 className="text-4xl font-bold text-primary mb-4 text-balance">404</h1>
+          <p className="text-xl text-foreground mb-8 text-balance">Oops! Página no encontrada</p>
+          <Link to="/">
+            <Button>Volver al Inicio</Button>
+          </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
       <AttributionFooter />
     </div>
   );
