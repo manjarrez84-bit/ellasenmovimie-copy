@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AttributionFooter } from '@/components/AttributionFooter';
-import SEOHead from '@/components/SEOHead';
 
 const Page = () => {
   const faqs = [

@@ -8,7 +8,6 @@ import { AttributionFooter } from '@/components/AttributionFooter';
 import BlogPostForm from '@/components/forms/BlogPostForm';
 import { getCurrentUser } from '@/services/forumService';
 import { getUserProfile } from '@/services/profileService';
-import SEOHead from '@/components/SEOHead';
 import { useRouter } from 'vike-react/useRouter';
 
 const Page = () => {
@@ -33,8 +32,6 @@ const Page = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <SEOHead title="Crear Publicación" description="Crea una nueva publicación para el blog de Ellas en Movimiento." path="/admin/blog/new" />
-      <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-4xl font-bold text-primary mb-8 text-balance">Crear Nueva Publicación</h1>

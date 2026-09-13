@@ -5,19 +5,14 @@ import Footer from '@/components/layout/Footer';
 import ContactSection from '@/components/ContactSection';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import ContactForm from '@/components/forms/ContactForm';
-import SEOHead from '@/components/SEOHead';
 
 const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <SEOHead
-        title="Contacto"
-        description="Contáctanos en Ellas en Movimiento, A.C. Porfirio Díaz 426 Nte. Col. Centro, Monterrey, N.L. Teléfono, correo electrónico y WhatsApp."
-        path="/contact"
-      />
       <Header />
-      <main className="flex-grow">
-        <ContactSection />
+            <main className="flex-grow">
+              <h1 className="sr-only">Contacto — Ellas en Movimiento, A.C.</h1>
+              <ContactSection />
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold text-primary mb-8 text-balance">Envíanos un Mensaje</h2>

@@ -12,7 +12,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import Link from '@/components/Link';
 import { PlusCircle } from 'lucide-react';
-import SEOHead from '@/components/SEOHead';
 
 const Page = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -61,13 +60,8 @@ const Page = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SEOHead
-        title="Blog"
-        description="Mantente al día con nuestras últimas noticias, historias de impacto y próximos eventos de Ellas en Movimiento."
-        path="/blog"
-      />
-      <Header />
+      <div className="flex flex-col min-h-screen">
+        <Header />
       <main className="flex-grow">
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">

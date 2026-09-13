@@ -14,7 +14,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
 import { Edit, Trash2, ArrowLeft, Users, Shield, Mail } from 'lucide-react';
 import Link from '@/components/Link';
-import SEOHead from '@/components/SEOHead';
 
 const Page = () => {
   const pageContext = usePageContext();
@@ -92,29 +91,28 @@ const Page = () => {
   };
 
   if (loading) {
+      return (
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow py-24 bg-muted/30">
+            <div className="container mx-auto px-4">
+              <Skeleton className="h-10 w-1/4 mb-8" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} className="h-[300px] rounded-lg" />
+                ))}
+              </div>
+            </div>
+          </main>
+          <Footer />
+          <AttributionFooter />
+        </div>
+      );
+    }
+  
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow py-24 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <Skeleton className="h-10 w-1/4 mb-8" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <Skeleton key={i} className="h-[300px] rounded-lg" />
-              ))}
-            </div>
-          </div>
-        </main>
-        <Footer />
-        <AttributionFooter />
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex flex-col min-h-screen">
-      <SEOHead title="Panel de Administración" description="Administra las publicaciones y usuarios de Ellas en Movimiento." path="/admin/dashboard" />
-      <Header />
       <main className="flex-grow py-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex items-center justify-between mb-8">

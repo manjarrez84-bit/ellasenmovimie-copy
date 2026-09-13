@@ -6,16 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AttributionFooter } from '@/components/AttributionFooter';
 import DonationForm from '@/components/forms/DonationForm';
 import DonationImpact from '@/components/DonationImpact';
-import SEOHead from '@/components/SEOHead';
 
 const Page = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <SEOHead
-        title="Donar"
-        description="Haz tu donación a Ellas en Movimiento, A.C. Tu generosidad impulsa nuestros programas de empoderamiento femenino en Monterrey."
-        path="/donate"
-      />
       <Header />
       <main className="flex-grow">
         <section className="py-16 bg-muted/30 text-center">

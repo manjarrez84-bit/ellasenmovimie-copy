@@ -12,7 +12,6 @@ import { ForumPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import SEOHead from '@/components/SEOHead';
 import { MessageSquare, PlusCircle, LogIn } from 'lucide-react';
 
 const Page = () => {
@@ -56,13 +55,8 @@ const Page = () => {
   }, [fetchPosts]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SEOHead
-        title="Foro Comunitario"
-        description="Comparte ideas, historias y conversa con la comunidad de Ellas en Movimiento."
-        path="/forum"
-      />
-      <Header />
+      <div className="flex flex-col min-h-screen">
+        <Header />
       <main className="flex-grow py-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
