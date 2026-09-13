@@ -50,7 +50,17 @@ DROP POLICY IF EXISTS "Users can update their own profile" ON profiles;
 CREATE POLICY "Users can update their own profile" ON profiles
 FOR UPDATE USING (auth.uid() = id);
 
--- Opcional: Permitir que los administradores vean todos los perfiles (para el dashboard de administración de usuarios, si se implementa)
--- DROP POLICY IF EXISTS "Admins can view all profiles" ON profiles;
--- CREATE POLICY "Admins can view all profiles" ON profiles
--- FOR SELECT USING (auth.uid() IN (SELECT id FROM profiles WHERE role = 'admin'));
+-- Permitir que los administradores vean todos los perfiles (para el dashboard de administración de usuarios)
+DROP POLICY IF EXISTS "Admins can view all profiles" ON profiles;
+CREATE POLICY "Admins can view all profiles" ON profiles
+FOR SELECT USING (auth.uid() IN (SELECT id FROM profiles WHERE role = 'admin'));
+
+-- Permitir que los administradores actualicen cualquier perfil
+DROP POLICY IF EXISTS "Admins can update all profiles" ON profiles;
+CREATE POLICY "Admins can update all profiles" ON profiles
+FOR UPDATE USING (auth.uid() IN (SELECT id FROM profiles WHERE role = 'admin'));
+
+-- Permitir que los administradores eliminen cualquier perfil
+DROP POLICY IF EXISTS "Admins can delete all profiles" ON profiles;
+CREATE POLICY "Admins can delete all profiles" ON profiles
+FOR DELETE USING (auth.uid() IN (SELECT id FROM profiles WHERE role = 'admin'));
