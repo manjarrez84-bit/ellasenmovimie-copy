@@ -48,9 +48,6 @@ const Page = () => {
             <img src="/introellas22.png" alt="Ellas en Movimiento A.C. - Introducción" className="mx-auto w-full h-auto" />
           </div>
         </section>
-        <AnimatedSection>
-          <CallToActionSection />
-        </AnimatedSection>
         <section className="py-12 bg-background">
           <div className="container mx-auto px-4 text-center">
             <img src="/ellas.gif" alt="Animación Ellas en Movimiento" className="mx-auto w-full max-w-4xl h-auto rounded-lg shadow-lg" />
@@ -63,19 +60,6 @@ const Page = () => {
         </section>
         <AnimatedSection>
           <LatestBlogPostsSection />
-        </AnimatedSection>
-        <AnimatedSection>
-          <section className="py-16 bg-background">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">NUESTRAS ALIANZAS</h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center max-w-5xl mx-auto">
-                <img src="/ALIANZA.png" alt="Alianza 1" className="mx-auto w-full h-auto object-contain" />
-                <img src="/ALIANZA1.png" alt="Alianza 2" className="mx-auto w-full h-auto object-contain" />
-                <img src="/alian.jpg" alt="Alianza 3" className="mx-auto w-3/4 h-auto object-contain" />
-                <img src="/CERT.png" alt="Certificación" className="mx-auto w-full h-auto object-contain" />
-              </div>
-            </div>
-          </section>
         </AnimatedSection>
         <AnimatedSection>
           <section className="py-16 bg-background">
@@ -93,6 +77,22 @@ const Page = () => {
               </div>
             </div>
           </section>
+        </AnimatedSection>
+        <AnimatedSection>
+          <section className="py-16 bg-background">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-5xl font-extrabold text-primary mb-10 uppercase text-balance">NUESTRAS ALIANZAS</h2>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center max-w-5xl mx-auto">
+                <img src="/ALIANZA.png" alt="Alianza 1" className="mx-auto w-full h-auto object-contain" />
+                <img src="/ALIANZA1.png" alt="Alianza 2" className="mx-auto w-full h-auto object-contain" />
+                <img src="/alian.jpg" alt="Alianza 3" className="mx-auto w-3/4 h-auto object-contain" />
+                <img src="/CERT.png" alt="Certificación" className="mx-auto w-full h-auto object-contain" />
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+        <AnimatedSection>
+          <CallToActionSection />
         </AnimatedSection>
         <AnimatedSection>
           <ContactSection />
