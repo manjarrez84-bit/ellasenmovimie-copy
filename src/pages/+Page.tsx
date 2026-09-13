@@ -8,6 +8,9 @@ import LatestBlogPostsSection from "@/components/LatestBlogPostsSection";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "@/components/Link";
 import ContactSection from "@/components/ContactSection";
+import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Page = () => {
   return (
