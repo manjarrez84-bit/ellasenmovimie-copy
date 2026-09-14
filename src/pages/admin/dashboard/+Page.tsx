@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { usePageContext } from 'vike-react/usePageContext';
+import { navigate } from 'vike/client/router';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -13,34 +13,31 @@ import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
 import { Edit, Trash2, ArrowLeft, Users, Shield, Mail } from 'lucide-react';
-import Link from '@/components/Link';
 
 const Page = () => {
-  const pageContext = usePageContext();
-  const navigate = pageContext.router.navigate;
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'posts' | 'users'>('posts');
 
   useEffect(() => {
-      const checkAuth = async () => {
-        const { getCurrentUser } = await import('@/services/forumService');
-        const user = await getCurrentUser();
-        if (!user) {
-          navigate('/');
-          return;
-        }
-        const { getUserProfile } = await import('@/services/profileService');
-        const profile = await getUserProfile(user.id);
-        if (!profile || profile.role !== 'admin') {
-          setLoading(false);
-          return;
-        }
-        fetchData();
-      };
-      checkAuth();
-    }, [navigate]);
+    const checkAuth = async () => {
+      const { getCurrentUser } = await import('@/services/forumService');
+      const user = await getCurrentUser();
+      if (!user) {
+        navigate('/');
+        return;
+      }
+      const { getUserProfile } = await import('@/services/profileService');
+      const profile = await getUserProfile(user.id);
+      if (!profile || profile.role !== 'admin') {
+        setLoading(false);
+        return;
+      }
+      fetchData();
+    };
+    checkAuth();
+  }, []);
 
   const fetchData = async () => {
     try {
@@ -92,54 +89,54 @@ const Page = () => {
   };
 
   if (loading) {
-        return (
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow py-24 bg-muted/30">
-              <div className="container mx-auto px-4">
-                <Skeleton className="h-10 w-1/4 mb-8" />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {[1, 2, 3].map((i) => (
-                    <Skeleton key={i} className="h-[300px] rounded-lg" />
-                  ))}
-                </div>
-              </div>
-            </main>
-            <Footer />
-            <AttributionFooter />
-          </div>
-        );
-      }
-  
-      if (!posts.length && !users.length) {
-        return (
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow py-24 bg-muted/30">
-              <div className="container mx-auto px-4 text-center">
-                <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Acceso Denegado</h1>
-                <p className="text-lg text-foreground mb-8 text-balance">No tienes permisos de administrador para acceder a esta página.</p>
-                <Link to="/">
-                  <Button>Volver al Inicio</Button>
-                </Link>
-              </div>
-            </main>
-            <Footer />
-            <AttributionFooter />
-          </div>
-        );
-      }
-  
     return (
       <div className="flex flex-col min-h-screen">
         <Header />
+        <main className="flex-grow py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <Skeleton className="h-10 w-1/4 mb-8" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <Skeleton key={i} className="h-[300px] rounded-lg" />
+              ))}
+            </div>
+          </div>
+        </main>
+        <Footer />
+        <AttributionFooter />
+      </div>
+    );
+  }
+
+  if (!posts.length && !users.length) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow py-24 bg-muted/30">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Acceso Denegado</h1>
+            <p className="text-lg text-foreground mb-8 text-balance">No tienes permisos de administrador para acceder a esta página.</p>
+            <a href="/">
+              <Button>Volver al Inicio</Button>
+            </a>
+          </div>
+        </main>
+        <Footer />
+        <AttributionFooter />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <main className="flex-grow py-16 bg-muted/30">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <Link to="/" className="inline-flex items-center text-primary hover:underline mb-4">
+              <a href="/" className="inline-flex items-center text-primary hover:underline mb-4">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Volver al Inicio
-              </Link>
+              </a>
               <h1 className="text-4xl font-bold text-primary text-balance">Panel de Administración</h1>
             </div>
             <div className="flex gap-2">
@@ -162,16 +159,16 @@ const Page = () => {
             <div>
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-primary">Publicaciones del Blog</h2>
-                <Link to="/admin/blog/new">
+                <a href="/admin/blog/new">
                   <Button>Crear Nueva Publicación</Button>
-                </Link>
+                </a>
               </div>
               {posts.length === 0 ? (
                 <div className="text-center py-16 bg-card rounded-lg shadow">
                   <p className="text-xl text-foreground mb-4">No hay publicaciones aún.</p>
-                  <Link to="/admin/blog/new">
+                  <a href="/admin/blog/new">
                     <Button>Crear Primera Publicación</Button>
-                  </Link>
+                  </a>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -186,11 +183,11 @@ const Page = () => {
                         <p className="text-sm text-foreground text-balance line-clamp-3">{post.summary}</p>
                       </CardContent>
                       <CardFooter className="flex gap-2">
-                        <Link to={`/admin/blog/edit/${post.id}`} className="flex-1">
+                        <a href={`/admin/blog/edit/${post.id}`} className="flex-1">
                           <Button variant="outline" size="sm" className="w-full flex items-center justify-center">
                             <Edit className="mr-2 h-4 w-4" /> Editar
                           </Button>
-                        </Link>
+                        </a>
                         <Button variant="destructive" size="sm" className="flex-1 flex items-center justify-center" onClick={() => handleDeletePost(post.id)}>
                           <Trash2 className="mr-2 h-4 w-4" /> Eliminar
                         </Button>
