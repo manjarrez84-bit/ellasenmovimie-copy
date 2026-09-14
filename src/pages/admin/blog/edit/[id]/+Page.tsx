@@ -14,25 +14,25 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const Page = () => {
   const pageContext = usePageContext();
-    const id = pageContext.routeParams.id;
+  const { id } = pageContext.routeParams;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      const checkAuth = async () => {
-        const user = await getCurrentUser();
-        if (!user) {
-          pageContext.router.navigate('/');
-          return;
-        }
-        const profile = await getUserProfile(user.id);
-        if (!profile || profile.role !== 'admin') {
-          pageContext.router.navigate('/');
-          return;
-        }
-      };
-      checkAuth();
-    }, []);
+    const checkAuth = async () => {
+      const user = await getCurrentUser();
+      if (!user) {
+        pageContext.router.navigate('/');
+        return;
+      }
+      const profile = await getUserProfile(user.id);
+      if (!profile || profile.role !== 'admin') {
+        pageContext.router.navigate('/');
+        return;
+      }
+    };
+    checkAuth();
+  }, []);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -82,8 +82,8 @@ const Page = () => {
   }
 
   return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <main className="flex-grow py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-4xl font-bold text-primary mb-8 text-balance">Editar Publicación</h1>

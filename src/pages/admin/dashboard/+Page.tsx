@@ -9,11 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAllPosts, deleteBlogPost } from '@/services/blogService';
 import { getAllUserProfiles, updateUserRole, deleteUserProfile } from '@/services/profileService';
-import { getAllSubscriptions, deleteSubscription } from '@/services/newsletterService';
-import { BlogPost, Subscription } from '@/types';
+import { BlogPost } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
-import { Edit, Trash2, ArrowLeft, Users, Shield, Mail, Newspaper } from 'lucide-react';
+import { Edit, Trash2, ArrowLeft, Users, Shield, Mail } from 'lucide-react';
 import Link from '@/components/Link';
 
 const Page = () => {
@@ -21,9 +20,8 @@ const Page = () => {
   const navigate = pageContext.router.navigate;
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [users, setUsers] = useState<any[]>([]);
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'posts' | 'users' | 'subscriptions'>('posts');
+  const [activeTab, setActiveTab] = useState<'posts' | 'users'>('posts');
 
   useEffect(() => {
     const checkAuth = async () => {
