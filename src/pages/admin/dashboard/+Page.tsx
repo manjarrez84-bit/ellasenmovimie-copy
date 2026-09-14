@@ -31,7 +31,8 @@ const Page = () => {
           navigate('/');
           return;
         }
-        const profile = await import('@/services/profileService').then(m => m.getUserProfile(user.id));
+        const { getUserProfile } = await import('@/services/profileService');
+        const profile = await getUserProfile(user.id);
         if (!profile || profile.role !== 'admin') {
           setLoading(false);
           return;
