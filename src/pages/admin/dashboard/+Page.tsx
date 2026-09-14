@@ -24,22 +24,22 @@ const Page = () => {
   const [activeTab, setActiveTab] = useState<'posts' | 'users'>('posts');
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { getCurrentUser } = await import('@/services/forumService');
-      const user = await getCurrentUser();
-      if (!user) {
-        navigate('/');
-        return;
-      }
-      const profile = await import('@/services/profileService').then(m => m.getUserProfile(user.id));
-      if (!profile || profile.role !== 'admin') {
-        navigate('/');
-        return;
-      }
-      fetchData();
-    };
-    checkAuth();
-  }, [navigate]);
+      const checkAuth = async () => {
+        const { getCurrentUser } = await import('@/services/forumService');
+        const user = await getCurrentUser();
+        if (!user) {
+          navigate('/');
+          return;
+        }
+        const profile = await import('@/services/profileService').then(m => m.getUserProfile(user.id));
+        if (!profile || profile.role !== 'admin') {
+          setLoading(false);
+          return;
+        }
+        fetchData();
+      };
+      checkAuth();
+    }, [navigate]);
 
   const fetchData = async () => {
     try {
@@ -91,24 +91,43 @@ const Page = () => {
   };
 
   if (loading) {
-      return (
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow py-24 bg-muted/30">
-            <div className="container mx-auto px-4">
-              <Skeleton className="h-10 w-1/4 mb-8" />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[1, 2, 3].map((i) => (
-                  <Skeleton key={i} className="h-[300px] rounded-lg" />
-                ))}
+        return (
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow py-24 bg-muted/30">
+              <div className="container mx-auto px-4">
+                <Skeleton className="h-10 w-1/4 mb-8" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[1, 2, 3].map((i) => (
+                    <Skeleton key={i} className="h-[300px] rounded-lg" />
+                  ))}
+                </div>
               </div>
-            </div>
-          </main>
-          <Footer />
-          <AttributionFooter />
-        </div>
-      );
-    }
+            </main>
+            <Footer />
+            <AttributionFooter />
+          </div>
+        );
+      }
+  
+      if (!posts.length && !users.length) {
+        return (
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow py-24 bg-muted/30">
+              <div className="container mx-auto px-4 text-center">
+                <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Acceso Denegado</h1>
+                <p className="text-lg text-foreground mb-8 text-balance">No tienes permisos de administrador para acceder a esta página.</p>
+                <Link to="/">
+                  <Button>Volver al Inicio</Button>
+                </Link>
+              </div>
+            </main>
+            <Footer />
+            <AttributionFooter />
+          </div>
+        );
+      }
   
     return (
       <div className="flex flex-col min-h-screen">
