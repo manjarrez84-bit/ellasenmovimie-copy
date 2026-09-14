@@ -48,26 +48,38 @@ Se graduaron 15 mujeres en educación financiera, e igual número de graduadas e
   user_id: 'static-user-id', // ID de usuario ficticio para el post estático
 };
 
-export const getAllPosts = async (): Promise<BlogPost[]> => {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .order('date', { ascending: false });
+const isSupabaseConfigured = (): boolean => {
+  return !!(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY);
+};
 
-  if (error) {
-    console.error('Error fetching posts:', error);
+export const getAllPosts = async (): Promise<BlogPost[]> => {
+  if (!isSupabaseConfigured()) {
     return [STATIC_TEST_POST];
   }
 
-  const supabasePosts = data as BlogPost[];
-  
-  const combinedPosts = [STATIC_TEST_POST, ...supabasePosts].filter((post, index, self) => 
-    index === self.findIndex((t) => (
-      t.id === post.id
-    ))
-  );
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('date', { ascending: false });
 
-  return combinedPosts;
+    if (error) {
+      console.warn('Error fetching posts:', error.message);
+      return [STATIC_TEST_POST];
+    }
+
+    const supabasePosts = data as BlogPost[];
+
+    const combinedPosts = [STATIC_TEST_POST, ...supabasePosts].filter((post, index, self) =>
+      index === self.findIndex((t) => (
+        t.id === post.id
+      ))
+    );
+
+    return combinedPosts;
+  } catch {
+    return [STATIC_TEST_POST];
+  }
 };
 
 export const getPostById = async (id: string): Promise<BlogPost | null> => {
@@ -75,21 +87,29 @@ export const getPostById = async (id: string): Promise<BlogPost | null> => {
     return STATIC_TEST_POST;
   }
 
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('id', id)
-    .single();
-
-  if (error) {
-    console.error(`Error fetching post with id ${id}:`, error);
-    if (error.code === 'PGRST116') {
-        return null;
-    }
-    throw new Error('No se pudo cargar la publicación.');
+  if (!isSupabaseConfigured()) {
+    return null;
   }
 
-  return data as BlogPost | null;
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.warn(`Error fetching post with id ${id}:`, error.message);
+      if (error.code === 'PGRST116') {
+        return null;
+      }
+      return null;
+    }
+
+    return data as BlogPost | null;
+  } catch {
+    return null;
+  }
 };
 
 export const createBlogPost = async (post: BlogPostFormValues, userId: string): Promise<BlogPost> => {
