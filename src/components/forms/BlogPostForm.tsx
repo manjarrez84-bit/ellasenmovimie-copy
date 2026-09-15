@@ -21,7 +21,7 @@ interface BlogPostFormProps {
 
 const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initialData, onSubmissionSuccess }) => {
   const pageContext = usePageContext() as any;
-  const navigate = pageContext.router.navigate;
+  const navigate = pageContext?.router?.navigate;
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(blogPostSchema),
     defaultValues: {
@@ -64,7 +64,11 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
         });
       }
       onSubmissionSuccess?.();
-      navigate('/blog');
+      if (navigate) {
+        navigate('/blog');
+      } else {
+        window.location.href = '/blog';
+      }
     } catch (error: any) {
       console.error("Error al procesar la publicación del blog:", error);
       toast.error(error.message || "Ocurrió un error al procesar la publicación.");

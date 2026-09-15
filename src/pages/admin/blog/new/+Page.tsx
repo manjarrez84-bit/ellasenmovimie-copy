@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { navigate } from 'vike/client/router';
+import { usePageContext } from 'vike-react/usePageContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -11,6 +11,8 @@ import { getUserProfile } from '@/services/profileService';
 import { Button } from '@/components/ui/button';
 
 const Page = () => {
+  const pageContext = usePageContext() as any;
+  const navigate = pageContext?.router?.navigate;
   const [user, setUser] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +20,7 @@ const Page = () => {
     const checkAuth = async () => {
       const currentUser = await getCurrentUser();
       if (!currentUser) {
-        navigate('/');
+        navigate?.('/');
         return;
       }
       const profile = await getUserProfile(currentUser.id);
