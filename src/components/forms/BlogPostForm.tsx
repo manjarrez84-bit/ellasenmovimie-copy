@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { createBlogPost, updateBlogPost } from '@/services/blogService';
-import { usePageContext } from 'vike-react/usePageContext';
+import { navigate } from 'vike/client/router';
 import { BlogPost, blogPostSchema, BlogPostFormValues } from '@/types';
 
 interface BlogPostFormProps {
@@ -20,8 +20,6 @@ interface BlogPostFormProps {
 }
 
 const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initialData, onSubmissionSuccess }) => {
-  const pageContext = usePageContext() as any;
-  const navigate = pageContext?.router?.navigate;
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(blogPostSchema),
     defaultValues: {
@@ -64,11 +62,7 @@ const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initia
         });
       }
       onSubmissionSuccess?.();
-      if (navigate) {
-        navigate('/blog');
-      } else {
-        window.location.href = '/blog';
-      }
+      navigate('/blog');
     } catch (error: any) {
       console.error("Error al procesar la publicación del blog:", error);
       toast.error(error.message || "Ocurrió un error al procesar la publicación.");

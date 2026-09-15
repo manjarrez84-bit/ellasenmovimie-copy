@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from '@/components/Link';
-import { usePageContext } from 'vike-react/usePageContext';
 import { useData } from 'vike-react/useData';
+import { navigate } from 'vike/client/router';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { AttributionFooter } from '@/components/AttributionFooter';
@@ -28,9 +28,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const Page = () => {
-  const pageContext = usePageContext();
   const { post } = useData<{ post: BlogPost }>();
-  const navigate = pageContext.router.navigate;
   const [currentUser, setCurrentUser] = useState<any | null>(null);
 
   useEffect(() => {

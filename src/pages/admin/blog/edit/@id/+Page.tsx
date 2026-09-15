@@ -1,105 +1,145 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { usePageContext } from 'vike-react/usePageContext';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { AttributionFooter } from '@/components/AttributionFooter';
-import BlogPostForm from '@/components/forms/BlogPostForm';
-import { getPostById } from '@/services/blogService';
-import { getCurrentUser } from '@/services/forumService';
-import { getUserProfile } from '@/services/profileService';
-import { BlogPost } from '@/types';
-import { Skeleton } from '@/components/ui/skeleton';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
+import { createBlogPost, updateBlogPost } from '@/services/blogService';
+import { navigate } from 'vike/client/router';
+import { BlogPost, blogPostSchema, BlogPostFormValues } from '@/types';
 
-const Page = () => {
-  const pageContext = usePageContext();
-  const { id } = pageContext.routeParams;
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+interface BlogPostFormProps {
+  userId: string;
+  authorEmail: string;
+  initialData?: BlogPost;
+  onSubmissionSuccess?: () => void;
+}
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const user = await getCurrentUser();
-      if (!user) {
-        pageContext.router.navigate('/');
-        return;
-      }
-      const profile = await getUserProfile(user.id);
-      if (!profile || profile.role !== 'admin') {
-        pageContext.router.navigate('/');
-        return;
-      }
-    };
-    checkAuth();
-  }, []);
+const BlogPostForm: React.FC<BlogPostFormProps> = ({ userId, authorEmail, initialData, onSubmissionSuccess }) => {
+  const form = useForm<BlogPostFormValues>({
+    resolver: zodResolver(blogPostSchema),
+    defaultValues: {
+      title: "",
+      author: authorEmail,
+      summary: "",
+      image_url: "",
+      content: "",
+    },
+  });
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        setLoading(true);
-        const fetchedPost = await getPostById(id as string);
-        setPost(fetchedPost);
-      } catch (err) {
-        console.error("Error fetching post:", err);
-      } finally {
-        setLoading(false);
+    if (initialData) {
+      form.reset({
+        title: initialData.title,
+        author: initialData.author,
+        summary: initialData.summary,
+        image_url: initialData.image_url,
+        content: initialData.content,
+      });
+    } else {
+      form.setValue("author", authorEmail);
+    }
+  }, [initialData, authorEmail, form]);
+
+  const onSubmit = async (values: BlogPostFormValues) => {
+    try {
+      if (initialData) {
+        await updateBlogPost(initialData.id, values);
+        toast.success("¡Publicación de blog actualizada con éxito!");
+      } else {
+        await createBlogPost(values, userId);
+        toast.success("¡Publicación de blog creada con éxito!");
+        form.reset({
+          title: "",
+          author: authorEmail,
+          summary: "",
+          image_url: "",
+          content: "",
+        });
       }
-    };
-    fetchPost();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow py-24 bg-muted/30">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <Skeleton className="h-10 w-1/3 mb-8" />
-            <Skeleton className="h-[500px] rounded-lg" />
-          </div>
-        </main>
-        <Footer />
-        <AttributionFooter />
-      </div>
-    );
-  }
-
-  if (!post) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow py-24 bg-muted/30">
-          <div className="container mx-auto px-4 max-w-3xl text-center">
-            <h1 className="text-4xl font-bold text-primary mb-4 text-balance">Publicación no encontrada</h1>
-            <p className="text-lg text-foreground mb-8 text-balance">Lo sentimos, no pudimos encontrar la publicación que estás buscando.</p>
-          </div>
-        </main>
-        <Footer />
-        <AttributionFooter />
-      </div>
-    );
-  }
+      onSubmissionSuccess?.();
+      navigate('/blog');
+    } catch (error: any) {
+      console.error("Error al procesar la publicación del blog:", error);
+      toast.error(error.message || "Ocurrió un error al procesar la publicación.");
+    }
+  };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow py-24 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <h1 className="text-4xl font-bold text-primary mb-8 text-balance">Editar Publicación</h1>
-          <div className="bg-card p-8 rounded-lg shadow-lg">
-            <BlogPostForm
-              userId={post.user_id}
-              authorEmail={post.author}
-              initialData={post}
-            />
-          </div>
-        </div>
-      </main>
-      <Footer />
-      <AttributionFooter />
-    </div>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6 bg-card rounded-lg shadow-lg">
+      <h3 className="text-2xl font-bold text-primary text-center">
+        {initialData ? "Editar Publicación de Blog" : "Crear Nueva Publicación de Blog"}
+      </h3>
+      <div>
+        <Label htmlFor="title" className="text-left block mb-2">Título</Label>
+        <Input
+          id="title"
+          type="text"
+          placeholder="Título de la publicación"
+          {...form.register("title")}
+        />
+        {form.formState.errors.title && (
+          <p className="text-destructive text-sm mt-1">{form.formState.errors.title.message}</p>
+        )}
+      </div>
+      <div>
+        <Label htmlFor="author" className="text-left block mb-2">Autor</Label>
+        <Input
+          id="author"
+          type="text"
+          placeholder="Nombre del autor"
+          {...form.register("author")}
+          disabled
+        />
+        {form.formState.errors.author && (
+          <p className="text-destructive text-sm mt-1">{form.formState.errors.author.message}</p>
+        )}
+      </div>
+      <div>
+        <Label htmlFor="summary" className="text-left block mb-2">Resumen</Label>
+        <Textarea
+          id="summary"
+          placeholder="Un breve resumen de la publicación..."
+          rows={3}
+          {...form.register("summary")}
+        />
+        {form.formState.errors.summary && (
+          <p className="text-destructive text-sm mt-1">{form.formState.errors.summary.message}</p>
+        )}
+      </div>
+      <div>
+        <Label htmlFor="image_url" className="text-left block mb-2">URL de la Imagen Principal</Label>
+        <Input
+          id="image_url"
+          type="url"
+          placeholder="https://ejemplo.com/imagen.jpg"
+          {...form.register("image_url")}
+        />
+        {form.formState.errors.image_url && (
+          <p className="text-destructive text-sm mt-1">{form.formState.errors.image_url.message}</p>
+        )}
+      </div>
+      <div>
+        <Label htmlFor="content" className="text-left block mb-2">Contenido (Markdown)</Label>
+        <Textarea
+          id="content"
+          placeholder="Escribe el contenido de tu publicación aquí (puedes usar Markdown)..."
+          rows={10}
+          {...form.register("content")}
+        />
+        {form.formState.errors.content && (
+          <p className="text-destructive text-sm mt-1">{form.formState.errors.content.message}</p>
+        )}
+      </div>
+      <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+        {form.formState.isSubmitting ? (initialData ? "Actualizando..." : "Publicando...") : (initialData ? "Actualizar Publicación" : "Publicar Blog Post")}
+      </Button>
+    </form>
   );
 };
 
-export default Page;
+export default BlogPostForm;
